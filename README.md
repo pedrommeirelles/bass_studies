@@ -38,6 +38,10 @@ Abra o site no navegador do celular e escolha "Adicionar à tela de início". O 
 - `index.html`: a ferramenta inteira (HTML, CSS e JavaScript num arquivo só). Não há etapa de compilação.
 - `manifest.webmanifest`, `icon.svg`, `icon-*.png`: ícone e instalação na tela de início.
 
+### Publicação
+
+O GitHub Pages publica o site a partir do branch `gh-pages`, que tem o mesmo conteúdo do `main`. Ao atualizar a ferramenta, envie a mesma versão para os dois branches (`git push origin main main:gh-pages`). Se preferir um branch só, troque a origem em Settings › Pages para `main` e apague o `gh-pages`.
+
 ### Créditos das bases
 
 Os links abrem os vídeos originais no YouTube: Backing Tracks Channel, Studio Closet, TGuitar e Music Jam Tracks.
