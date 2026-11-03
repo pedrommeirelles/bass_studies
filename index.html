@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Treino de mapeamento horizontal da escala maior no baixo: corda por corda, pelos graus, com backing tracks.">
+<meta name="description" content="Treino de baixo: mapeamento horizontal da escala maior corda por corda, e trilhas de teoria (dominantes secundários e menor harmônica) com áudio e exercícios.">
 <meta name="theme-color" content="#F2F3F7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#12141F" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -63,7 +63,7 @@ header.top{padding-block:18px 10px;display:flex;flex-direction:column;gap:4px}
 header.top .sub{color:var(--muted);font-size:.9rem}
 
 nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px 10px}
-nav.tabs .seg{display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface-2);border-radius:999px;padding:4px;gap:2px}
+nav.tabs .seg{display:grid;grid-template-columns:repeat(6,1fr);background:var(--surface-2);border-radius:999px;padding:4px;gap:2px}
 nav.tabs .seg button{border-radius:999px;padding:8px 4px;font-weight:600;font-size:.86rem;color:var(--muted);transition:background .15s,color .15s}
 nav.tabs .seg button[aria-selected="true"]{background:var(--surface);color:var(--fg);box-shadow:var(--shadow)}
 
@@ -199,6 +199,51 @@ details.backup .col{padding-top:6px}
 .kbd{font-family:var(--mono);font-size:.8rem;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:var(--surface)}
 @media (max-width:420px){ .opts{grid-template-columns:repeat(4,1fr)} .anchors{gap:6px} nav.tabs .seg button{font-size:.78rem;padding:8px 2px} }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+/* ===== Teoria: trilhas de harmonia ===== */
+.t-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.t-day{border:1px solid var(--line);border-radius:10px;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:1px;background:var(--surface);min-height:58px}
+.t-day .w{font-size:.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.t-day .n{font-family:var(--mono);font-weight:600;font-size:1.05rem;line-height:1.2}
+.t-day .d{font-size:.66rem;color:var(--muted)}
+.t-day[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.t-day.s1{background:var(--bad-soft)} .t-day.s2{background:var(--warn-soft)} .t-day.s3{background:var(--ok-soft)}
+.t-day.today .w{color:var(--accent)}
+.t-blk{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.t-blk>.num{font-family:var(--mono);font-weight:600;font-size:1.1rem;color:var(--muted);background:var(--surface-2);border-radius:8px;width:34px;height:34px;display:grid;place-items:center}
+.t-blk>.body{display:flex;flex-direction:column;gap:12px;min-width:0}
+.t-blk .hd2{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between}
+.t-ideia{display:flex;flex-direction:column;gap:10px}
+.t-ideia ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.t-tbl{overflow-x:auto}
+.t-tbl table{border-collapse:collapse;width:100%;font-size:.88rem}
+.t-tbl th,.t-tbl td{border-bottom:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}
+.t-tbl th{color:var(--muted);font-weight:600;font-size:.78rem}
+.t-ideia .tip{background:var(--accent-soft);color:var(--fg);border-radius:10px;padding:10px 12px;font-weight:600}
+.t-ideia .big{font-family:var(--mono);font-weight:600;font-size:1rem;background:var(--surface-2);border-radius:10px;padding:8px 10px}
+.t-ex{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.t-ex .st{font-weight:600}
+.t-ex .meta{color:var(--muted);font-size:.86rem}
+.t-play{min-width:86px}
+.t-play[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.opts.txt{grid-template-columns:1fr}
+.opts.txt button{font-family:var(--body);font-size:.95rem;text-align:left;padding:10px 12px;line-height:1.3}
+.opts.tx button{font-family:var(--body);font-size:.92rem;line-height:1.25;padding:8px 6px}
+.fb .fr.t-r{background:var(--accent);color:var(--accent-fg)}
+.fb .fr.t-c{background:var(--accent-soft);color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.fb .fr.t-s{background:var(--surface-2);color:var(--fg)}
+.fb .fr.t-x{background:var(--bad-soft);color:var(--bad);box-shadow:inset 0 0 0 1.5px var(--bad)}
+.fb .fr.t-n{background:var(--five-soft);color:var(--five);box-shadow:inset 0 0 0 1.5px var(--five)}
+.t-now{font-family:var(--display);font-size:1.5rem;font-weight:700;min-height:2.1rem;line-height:1.2}
+.t-now small{display:block;font-family:var(--body);font-size:.82rem;font-weight:500;color:var(--muted)}
+.t-hint{font-size:.82rem;color:var(--muted)}
+.t-mods .switch{padding:8px 0}
+.t-mods .rate{min-width:0;flex:1 1 260px}
+.t-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.t-line .lb{font-size:.82rem;color:var(--muted);min-width:58px}
+.fb-legend i.lg-r{background:var(--accent)} .fb-legend i.lg-c{background:var(--accent-soft);box-shadow:inset 0 0 0 1.5px var(--accent)} .fb-legend i.lg-s{background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)} .fb-legend i.lg-x{background:var(--bad-soft);box-shadow:inset 0 0 0 1.5px var(--bad)} .fb-legend i.lg-n{background:var(--five-soft);box-shadow:inset 0 0 0 1.5px var(--five)}
+.t-cur{color:var(--accent);font-weight:600;margin-top:2px}
+@media (max-width:420px){ .t-day{min-height:54px} .t-day .n{font-size:.98rem} }
+.t-tbl td.mono{white-space:nowrap;font-size:.82rem}
 </style>
 </head>
 <body>
@@ -213,6 +258,7 @@ details.backup .col{padding-top:6px}
   <nav class="tabs" aria-label="Seções">
     <div class="seg" role="tablist">
       <button role="tab" data-tab="hoje" aria-selected="true">Hoje</button>
+      <button role="tab" data-tab="teoria" aria-selected="false">Teoria</button>
       <button role="tab" data-tab="mapa" aria-selected="false">Mapa</button>
       <button role="tab" data-tab="teste" aria-selected="false">Teste</button>
       <button role="tab" data-tab="bases" aria-selected="false">Bases</button>
@@ -307,6 +353,29 @@ details.backup .col{padding-top:6px}
       <textarea id="note" placeholder="Dúvida ou observação para levar ao Maca (opcional)"></textarea>
       <button class="btn primary block" id="btn-end">Registrar sessão</button>
       <p class="small muted" id="session-summary"></p>
+    </div>
+  </section>
+
+  <!-- TEORIA -->
+  <section class="panel" id="tab-teoria" role="tabpanel" hidden>
+    <div class="card">
+      <span class="eyebrow">Trilha · aula de 03/11 · Isn't She Lovely</span>
+      <h2>Dominantes secundários e a menor harmônica</h2>
+      <p class="small muted">Sete sessões de 15 minutos, de terça 03/11 a segunda 09/11, para chegar firme na aula de terça 10/11. Funciona no celular, sem o baixo; o bloco "No baixo" é opcional.</p>
+      <div class="t-days" id="t-days"></div>
+      <p class="small" id="t-next"></p>
+    </div>
+    <div class="col" id="t-session" style="gap:14px"></div>
+    <div class="card" id="t-loops">
+      <div class="row between"><h2>Bases da trilha</h2><span class="tag">sem baixo</span></div>
+      <p class="small muted">Para cantar as fundamentais sem o instrumento ou para tocar junto. O original anda perto de 119 BPM; na aula ele usou 0,75 (cerca de 90).</p>
+      <div class="t-line"><span class="lb">Tom</span><div class="chips" id="t-lk"></div></div>
+      <div class="t-line"><span class="lb">BPM</span><div class="chips" id="t-lb"></div></div>
+      <div class="t-line"><span class="lb">Bateria</span><div class="chips" id="t-ld"></div></div>
+      <div class="t-now" id="t-now" aria-live="polite">&nbsp;</div>
+      <div class="col" id="t-ll"></div>
+      <a class="btn" href="https://www.youtube.com/watch?v=vOZfQOUgIko" target="_blank" rel="noopener">Base do Maca no YouTube (Mi, Guitare Improvisation)</a>
+      <p class="small muted">No iPhone, se não sair som, desligue o modo silencioso.</p>
     </div>
   </section>
 
@@ -580,6 +649,7 @@ const STYLES = [
 const EXTRA_TRACKS = [
   { name:'Pop/rock I vi IV V, 80 BPM (TGuitar)', ids:{ C:'F3mTZ3edzjc', G:'gwoHnmcCuH4', D:'O2noDNfFcRs' } },
   { name:'Motown sem baixo (Music Jam Tracks)', ids:{ C:'7yFNXZr4K4s', E:'8sX9_nJLWpM' } },
+  { name:"Isn't She Lovely, a base que o Maca mandou (Guitare Improvisation)", meta:'Repertório: parte A 6 2 5 1, parte B 4 3 6 2 5 1. Treino na aba Teoria.', ids:{ E:'vOZfQOUgIko' } },
 ];
 const ALL12 = [ { name:'ii V I jazz nos 12 tons, sequência (54 min)', id:'3DxBrf_6Awg' }, { name:'ii V I jazz, ciclo de quartas, 12 tons em 3 min', id:'OlDAXP-XjSM' } ];
 const YT = id => 'https://www.youtube.com/watch?v=' + id;
@@ -601,7 +671,17 @@ function isObj(x){ return !!x && typeof x === 'object' && !Array.isArray(x); }
 function clone(o){ return o == null ? o : JSON.parse(JSON.stringify(o)); }
 function sortKeys(o){ if (Array.isArray(o)) return o.map(sortKeys); if (isObj(o)){ const r = {}; Object.keys(o).sort().forEach(k => { r[k] = sortKeys(o[k]); }); return r; } return o; }
 function canon(o){ return JSON.stringify(sortKeys(o)); }
-function emptyData(){ return { v:2, cells:{}, pairs:{}, quizLog:[], best:{ v:0, t:0 }, settings:Object.assign({}, DEFAULT_SETTINGS), sessions:[], resetAt:0 }; }
+function emptyData(){ return { v:2, cells:{}, pairs:{}, quizLog:[], best:{ v:0, t:0 }, settings:Object.assign({}, DEFAULT_SETTINGS), sessions:[], resetAt:0, harm:emptyHarm() }; }
+// Theory tracks: per-session records (newest wins), one-tap module ratings and an answer log (union).
+const HARM_LOG_CAP = 3000;
+function emptyHarm(){ return { s:{}, mod:{}, log:[] }; }
+function normHarm(h){ h = isObj(h) ? h : {}; const log = Array.isArray(h.log) ? h.log.filter(e => Array.isArray(e) && e.length >= 3 && typeof e[0] === 'number' && typeof e[1] === 'string') : []; return { s: isObj(h.s) ? h.s : {}, mod: isObj(h.mod) ? h.mod : {}, log: log.slice(-HARM_LOG_CAP) }; }
+function mergeHarm(a, b){
+  a = normHarm(a); b = normHarm(b);
+  const pick = (x, y) => { const out = {}; [x, y].forEach(m => Object.keys(m).forEach(k => { const v = m[k]; if (!isObj(v)) return; if (!out[k] || (+v.t || 0) > (+out[k].t || 0)) out[k] = v; })); return out; };
+  const lm = new Map(); a.log.concat(b.log).forEach(e => lm.set(e[0] + '|' + e[1], e));
+  return { s: pick(a.s, b.s), mod: pick(a.mod, b.mod), log: Array.from(lm.values()).sort((p, q) => p[0] - q[0]).slice(-HARM_LOG_CAP) };
+}
 function normalize(d){
   d = isObj(d) ? d : {};
   const log = Array.isArray(d.quizLog) ? d.quizLog.filter(e => Array.isArray(e) && e.length >= 3 && typeof e[0] === 'number' && typeof e[1] === 'string') : [];
@@ -614,7 +694,8 @@ function normalize(d){
     best: isObj(d.best) ? { v: +d.best.v || 0, t: +d.best.t || 0 } : { v:0, t:0 },
     settings: Object.assign({}, DEFAULT_SETTINGS, isObj(d.settings) ? d.settings : {}),
     sessions: ses.slice(0, SESS_CAP),
-    resetAt: +d.resetAt || 0
+    resetAt: +d.resetAt || 0,
+    harm: normHarm(d.harm)
   };
 }
 // Merge two saved states: newest rating per cell wins, quiz answers and sessions are unions,
@@ -632,7 +713,7 @@ function mergeData(a, b){
   const sMap = new Map();
   a.sessions.concat(b.sessions).forEach(s => { sMap.set(s.ts, s); });
   const sessions = Array.from(sMap.values()).sort((p, q) => q.ts - p.ts).slice(0, SESS_CAP);
-  return { v:2, cells: pick(a.cells, b.cells), pairs: pick(a.pairs, b.pairs), quizLog, best, settings: Object.assign({}, settings), sessions, resetAt };
+  return { v:2, cells: pick(a.cells, b.cells), pairs: pick(a.pairs, b.pairs), quizLog, best, settings: Object.assign({}, settings), sessions, resetAt, harm: mergeHarm(a.harm, b.harm) };
 }
 // Converts the first version's format (separate cells, pairs, quiz counters, settings, sessions).
 function fromV1(o){
@@ -1109,7 +1190,7 @@ function renderBases(){
   activeKeys().forEach(k => kc.appendChild(chip(keyName(k), S.ui.bKey === k.id, () => { S.ui.bKey = k.id; renderBases(); }, 'sm')));
   const k = keyById(S.ui.bKey);
   let h = '<div style="display:flex;flex-direction:column;gap:10px">' + STYLES.map(s => trackHtml(k, s)).join('');
-  EXTRA_TRACKS.forEach(e => { if (e.ids[k.id]) h += '<div class="track"><div><div class="st">' + e.name + '</div><div class="meta">Alternativa em ' + keyName(k) + '</div></div><a class="btn" href="' + YT(e.ids[k.id]) + '" target="_blank" rel="noopener">Abrir</a></div>'; });
+  EXTRA_TRACKS.forEach(e => { if (e.ids[k.id]) h += '<div class="track"><div><div class="st">' + e.name + '</div><div class="meta">' + (e.meta || 'Alternativa em ' + keyName(k)) + '</div></div><a class="btn" href="' + YT(e.ids[k.id]) + '" target="_blank" rel="noopener">Abrir</a></div>'; });
   h += ALL12.map(x => '<div class="track"><div><div class="st">' + x.name + '</div><div class="meta">Para o dia em que os cinco tons estiverem firmes</div></div><a class="btn" href="' + YT(x.id) + '" target="_blank" rel="noopener">Abrir</a></div>').join('');
   document.getElementById('tracks').innerHTML = h + '</div>';
 }
@@ -1157,9 +1238,699 @@ function importBackup(){
 }
 function toast(t){ const el = document.getElementById('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2800); }
 
+/* ===================== Teoria: núcleo musical ===================== */
+// Notes are spelled by letter: {L: letter index (Dó..Si), pc: pitch class, a: accidental, n: name}.
+// Spelling by letter keeps Si#, Mi# and Fá## right, which pitch classes alone cannot do.
+const T_ACC = { '-2':'bb', '-1':'b', '0':'', '1':'#', '2':'##' };
+function tN(L, pc){ pc = ((pc % 12) + 12) % 12; let a = ((pc - LETTER_PC[L]) % 12 + 12) % 12; if (a > 6) a -= 12; return { L, pc, a, n: LETTERS[L] + (T_ACC[a] != null ? T_ACC[a] : '?') }; }
+function tUp(r, semis, steps){ return tN((r.L + steps) % 7, r.pc + semis); }
+function tRoot(kid){ const k = keyById(kid); return tN(k.letter, k.pc); }
+const T_SC = {
+  maior:     { iv:[0,2,4,5,7,9,11], st:[0,1,2,3,4,5,6] },
+  natural:   { iv:[0,2,3,5,7,8,10], st:[0,1,2,3,4,5,6] },
+  harmonica: { iv:[0,2,3,5,7,8,11], st:[0,1,2,3,4,5,6] },
+  mixo:      { iv:[0,2,4,5,7,9,10], st:[0,1,2,3,4,5,6] },
+  frigdom:   { iv:[0,1,4,5,7,8,10], st:[0,1,2,3,4,5,6] },
+  pentaM:    { iv:[0,2,4,7,9],      st:[0,1,2,4,5] },
+  pentam:    { iv:[0,3,5,7,10],     st:[0,2,3,4,6] }
+};
+const T_CH = {
+  '7':  { iv:[0,4,7,10], st:[0,2,4,6], s:'7' },
+  m7:   { iv:[0,3,7,10], st:[0,2,4,6], s:'m7' },
+  maj7: { iv:[0,4,7,11], st:[0,2,4,6], s:'maj7' },
+  m7b5: { iv:[0,3,6,10], st:[0,2,4,6], s:'m7(b5)' }
+};
+function tScale(r, id){ const s = T_SC[id]; return s.iv.map((x, i) => tUp(r, x, s.st[i])); }
+function tChord(r, q){ const c = T_CH[q]; return c.iv.map((x, i) => tUp(r, x, c.st[i])); }
+function tCN(r, q){ return r.n + T_CH[q].s; }
+function tL(ns){ return ns.map(x => x.n).join(' '); }
+function tPcs(ns){ return ns.map(x => x.pc); }
+const T_Q = ['maj7','m7','m7','maj7','7','m7','m7b5'], T_RO = ['I','ii','iii','IV','V','vi','vii'];
+function tDeg(kid, d){ const r = tScale(tRoot(kid), 'maior')[d - 1]; const q = T_Q[d - 1]; return { d, r, q, name: tCN(r, q), ro: T_RO[d - 1], tones: tChord(r, q) }; }
+// Secondary dominant of degree d: a perfect fifth above the target, major chord with minor seventh.
+function tSec(kid, d){ const tg = tDeg(kid, d); const r = tUp(tg.r, 7, 4); return { d, r, name: tCN(r, '7'), tones: tChord(r, '7'), tg, lab: 'V7/' + tg.ro }; }
+function tKeyPcs(kid){ return tPcs(tScale(tRoot(kid), 'maior')); }
+function tKN(kid){ return tRoot(kid).n; }
+const T_K5 = ['E','D','A','G','C'];
+function tPick(a){ return a[rnd(a.length)]; }
+function tOpts(right, wrong, n){ const out = [right]; shuffle(wrong.slice()).forEach(w => { if (out.length < (n || 4) && out.indexOf(w) < 0) out.push(w); }); return shuffle(out); }
+const T_REL = [ { k:'E', m:tN(0,1) }, { k:'D', m:tN(6,11) }, { k:'A', m:tN(3,6) }, { k:'G', m:tN(2,4) }, { k:'C', m:tN(5,9) } ];
+const T_ENH = { 'Si#':'Dó', 'Mi#':'Fá', 'Lá#':'Sib', 'Ré#':'Mib', 'Sol#':'Láb', 'Dó#':'Réb', 'Fá#':'Solb' };
+function tRelPick(c){ const pool = T_REL.filter(x => (c.keys || ['E']).indexOf(x.k) >= 0); return tPick(pool.length ? pool : T_REL); }
+const T_PD = ['1','b9','3','11','5','b13','b7'], T_PDC = ['5','b6','7','1','2','b3','4'];
+function tV6(kid){ const sd = tSec(kid, 6); return { sd, sc: tScale(sd.r, 'frigdom') }; }
+
+/* A música, em Mi maior */
+const T_FUND = { 'Dó#m7':'corda Lá, casa 4', 'Fá#7':'corda Mi, casa 2', 'Si7':'corda Lá, casa 2', 'Mi':'corda Mi solta', 'Lámaj7':'corda Mi, casa 5', 'Sol#7':'corda Mi, casa 4' };
+const T_SONG = {
+  A: [
+    { c:'Dó#m7', cf:'C#m7', fu:'vi', g:'6', sc:'penta menor de Dó#' },
+    { c:'Fá#7', cf:'F#7', fu:'V7/V', g:'2', sc:'penta maior de Fá#' },
+    { c:'Si7', cf:'B7', fu:'V', g:'5', sc:'penta maior de Si' },
+    { c:'Mi', cf:'E', fu:'I', g:'1', sc:'penta maior de Mi' }
+  ],
+  B: [
+    { c:'Lámaj7', cf:'Amaj7', fu:'IV', g:'4', sc:'penta maior de Lá' },
+    { c:'Sol#7', cf:'G#7', fu:'V7/vi', g:'3', sc:'Dó# menor harmônica' },
+    { c:'Dó#m7', cf:'C#m7', fu:'vi', g:'6', sc:'penta menor de Dó#' },
+    { c:'Fá#7', cf:'F#7', fu:'V7/V', g:'2', sc:'penta maior de Fá#' },
+    { c:'Si7', cf:'B7', fu:'V', g:'5', sc:'penta maior de Si' },
+    { c:'Mi', cf:'E', fu:'I', g:'1', sc:'penta maior de Mi' }
+  ]
+};
+function tSongChords(){ return [
+  { c:'Sol#7', r:tN(4,8), q:'7', cand:'pentaM' },
+  { c:'Fá#7', r:tN(3,6), q:'7', cand:'pentaM' },
+  { c:'Si7', r:tN(6,11), q:'7', cand:'pentaM' },
+  { c:'Dó#m7', r:tN(0,1), q:'m7', cand:'pentam' },
+  { c:'Lámaj7', r:tN(5,9), q:'maj7', cand:'pentaM' },
+  { c:'Mimaj7', r:tN(2,4), q:'maj7', cand:'pentaM' }
+]; }
+const T_MAPSC = ['penta menor de Dó#','penta maior de Fá#','penta maior de Si','penta maior de Mi','penta maior de Lá','Dó# menor harmônica'];
+
+/* ===================== Teoria: geradores de perguntas ===================== */
+// Each generator returns { q, o (options), a (answer), ex (explanation), cls (layout) }.
+const TG = {};
+// Sessão 1
+TG.grau = { f(){ const P = rnd(2) ? 'A' : 'B'; const it = tPick(T_SONG[P]); return { q:'Na parte ' + P + ', que grau é o ' + it.c + ' em Mi maior?', o: tOpts(it.g, ['1','2','3','4','5','6','7'].filter(x => x !== it.g), 4), a: it.g, ex: 'A fundamental do ' + it.c + ' é o ' + it.g + 'º grau de Mi maior (Mi Fá# Sol# Lá Si Dó# Ré#). Parte A: 6 2 5 1. Parte B: 4 3 6 2 5 1.' }; } };
+TG.campo = { f(c){ const kid = tPick(c.keys); const x = tDeg(kid, 1 + rnd(7)); const w = ['maj7','m7','7','m7b5'].filter(q => q !== x.q).map(q => tCN(x.r, q)); const all = [1,2,3,4,5,6,7].map(i => { const y = tDeg(kid, i); return y.ro + ' ' + y.name; }).join(' · '); return { q:'No campo harmônico de ' + tKN(kid) + ' maior, qual é o acorde do grau ' + x.ro + '?', o: tOpts(x.name, w, 4), a: x.name, ex:'Campo de ' + tKN(kid) + ' maior: ' + all + '.', cls:'two' }; } };
+TG.intruso = { f(c){ const kid = tPick(c.keys); const td = 2 + rnd(5); const sd = tSec(kid, td); const nat = tDeg(kid, ((td - 1 + 4) % 7) + 1); const ds = shuffle([1,2,3,4,5,6,7]).slice(0, 3).map(i => tDeg(kid, i).name).filter(x => x !== sd.name); return { q:'Qual destes acordes NÃO pertence ao campo harmônico de ' + tKN(kid) + ' maior?', o: shuffle(ds.slice(0, 3).concat([sd.name])), a: sd.name, ex: sd.name + ' é maior com sétima (' + tL(sd.tones) + '). No campo, o acorde sobre ' + sd.r.n + ' é ' + nat.name + '. ' + sd.name + ' é o ' + sd.lab + ': prepara o ' + sd.tg.name + '.', cls:'two' }; } };
+TG.v7 = { f(c){ const kid = tPick(c.keys); const v = tDeg(kid, 5); return { q:'Qual é o dominante (V7) de ' + tKN(kid) + ' maior?', o: tOpts(v.name, [tCN(tDeg(kid, 4).r, '7'), tCN(tDeg(kid, 2).r, '7'), tCN(v.r, 'maj7'), tCN(tDeg(kid, 6).r, '7')], 4), a: v.name, ex:'Uma quinta acima de ' + tKN(kid) + ' está o ' + v.r.n + '. Acorde maior com sétima menor: ' + v.name + ' (' + tL(v.tones) + ').', cls:'two' }; } };
+TG.notasV7 = { f(c){ const kid = tPick(c.keys); const v = tDeg(kid, 5); const t = v.tones; const right = tL(t); return { q:'Quais são as notas de ' + v.name + ', o V7 de ' + tKN(kid) + ' maior?', o: shuffle([right, tL([t[0], tUp(v.r, 3, 2), t[2], t[3]]), tL([t[0], t[1], t[2], tUp(v.r, 11, 6)]), tL([t[0], t[1], tUp(v.r, 6, 4), t[3]])]), a: right, ex:'Dominante = 1 3 5 b7: ' + right + '. Com terça menor seria m7; com sétima maior, maj7.', cls:'txt' }; } };
+TG.sens = { f(c){ const kid = tPick(c.keys); const v = tDeg(kid, 5), I = tDeg(kid, 1); const th = v.tones[1]; return { q:'No ' + v.name + ' → ' + I.name + ', para onde vai a 3ª do dominante (' + th.n + ')?', o: tOpts(I.r.n, [I.tones[1].n, I.tones[2].n, th.n + ' (fica parado)'], 4), a: I.r.n, ex: th.n + ' é a sensível: meio tom abaixo de ' + I.r.n + '. Sobe meio tom para a tônica.', cls:'two' }; } };
+TG.setima = { f(c){ const kid = tPick(c.keys); const v = tDeg(kid, 5), I = tDeg(kid, 1); const sv = v.tones[3]; return { q:'No ' + v.name + ' → ' + I.name + ', para onde vai a 7ª do dominante (' + sv.n + ')?', o: tOpts(I.tones[1].n, [I.r.n, I.tones[2].n, sv.n + ' (fica parado)'], 4), a: I.tones[1].n, ex: sv.n + ' desce meio tom para ' + I.tones[1].n + ', a 3ª de ' + I.name + '.', cls:'two' }; } };
+TG.trit = { f(c){ const kid = tPick(c.keys); const v = tDeg(kid, 5); const t = v.tones; const right = t[1].n + ' e ' + t[3].n; return { q:'Qual par de notas forma o trítono do ' + v.name + '?', o: shuffle([right, t[0].n + ' e ' + t[2].n, t[1].n + ' e ' + t[2].n, t[0].n + ' e ' + t[3].n]), a: right, ex:'A 3ª (' + t[1].n + ') e a 7ª (' + t[3].n + '): três tons, seis casas. É a tensão que pede resolução.', cls:'two' }; } };
+// Sessão 2
+TG.sec = { f(c){ const kid = tPick(c.keys); const sd = tSec(kid, 2 + rnd(5)); const tg = sd.tg; return { q:'Qual dominante secundário prepara o ' + tg.name + ' em ' + tKN(kid) + ' maior?', o: tOpts(sd.name, [tCN(tUp(tg.r, 5, 3), '7'), tCN(sd.r, 'm7'), tCN(tUp(tg.r, 11, 6), '7'), tCN(tUp(tg.r, 2, 1), '7')], 4), a: sd.name, ex:'Uma quinta acima de ' + tg.r.n + ' está o ' + sd.r.n + '. Maior com sétima: ' + sd.name + ' (' + tL(sd.tones) + '). Escreve-se ' + sd.lab + '.', cls:'two' }; } };
+TG.alvo = { f(c){ const kid = tPick(c.keys); const d = 2 + rnd(5); const sd = tSec(kid, d); const others = [1,2,3,4,5,6].filter(i => i !== d).map(i => tDeg(kid, i).name); return { q:'O ' + sd.name + ' prepara qual acorde de ' + tKN(kid) + ' maior?', o: tOpts(sd.tg.name, others, 4), a: sd.tg.name, ex: sd.name + ' quer cair uma quinta: ' + sd.r.n + ' → ' + sd.tg.r.n + '. No campo, o acorde de ' + sd.tg.r.n + ' é ' + sd.tg.name + '. É o ' + sd.lab + '.', cls:'two' }; } };
+TG.fora = { f(c){ const kid = tPick(c.keys); const sd = tSec(kid, tPick([2,4,5,6])); const kp = tKeyPcs(kid); const out = sd.tones.filter(x => kp.indexOf(x.pc) < 0)[0]; const role = sd.tones.indexOf(out) === 1 ? 'a 3ª do ' + sd.name + ', meio tom abaixo de ' + sd.tg.r.n + ': a sensível emprestada' : 'a 7ª do ' + sd.name + ', que desce meio tom para ' + sd.tg.tones[1].n + ', a 3ª do ' + sd.tg.name; return { q:'Qual nota do ' + sd.name + ' não pertence a ' + tKN(kid) + ' maior?', o: shuffle(sd.tones.map(x => x.n)), a: out.n, ex: tKN(kid) + ' maior: ' + tL(tScale(tRoot(kid), 'maior')) + '. ' + out.n + ' é ' + role + '.' }; } };
+TG.braco = { f(){ const sd = tSec('E', 2 + rnd(5)); const strs = [{ pc:9, nm:'Lá', lo:'Mi', hi:'Ré' }, { pc:2, nm:'Ré', lo:'Lá', hi:'Sol' }, { pc:7, nm:'Sol', lo:'Ré', hi:null }]; const pos = []; strs.forEach(s => { const f = ((sd.tg.r.pc - s.pc) % 12 + 12) % 12; if (f >= 1 && f <= 9) pos.push({ s, f }); }); const p = tPick(pos); const right = 'corda ' + p.s.lo + ', casa ' + p.f; const w = ['corda ' + p.s.nm + ', casa ' + (p.f - 1), 'corda ' + p.s.nm + ', casa ' + (p.f + 2), p.s.hi ? 'corda ' + p.s.hi + ', casa ' + p.f : 'corda ' + p.s.nm + ', casa ' + (p.f + 5)]; return { q:'O ' + sd.tg.name + ' tem a fundamental ' + sd.tg.r.n + ' na corda ' + p.s.nm + ', casa ' + p.f + '. Onde está a fundamental do dominante dele, o ' + sd.name + '?', o: shuffle([right].concat(w)), a: right, ex:'Mesma casa, corda vizinha mais grave: ' + sd.r.n + ' na ' + right + '. As cordas são afinadas em quartas, e uma quarta abaixo é a mesma nota que uma quinta acima. Na casa ' + (p.f - 1) + ' da corda ' + p.s.nm + ' está o ' + sd.tones[1].n + ', a 3ª do ' + sd.name + ' (a sensível).', cls:'txt' }; } };
+TG.analise = { f(c){ const kid = tPick(c.keys); const sd = tSec(kid, 2 + rnd(5)); return { q:'Em ' + tKN(kid) + ' maior, ' + sd.name + ' → ' + sd.tg.name + ' é:', o: tOpts(sd.lab, ['V7/ii','V7/iii','V7/IV','V7/V','V7/vi'].filter(x => x !== sd.lab), 4), a: sd.lab, ex: sd.name + ' é o dominante de ' + sd.tg.name + ', o ' + sd.tg.ro + ' de ' + tKN(kid) + ' maior: ' + sd.lab + ', "cinco do ' + sd.tg.ro + '".' }; } };
+TG.ciclo = { f(){ const p = tPick([['Sol#7','Dó#m7'],['Dó#m7','Fá#7'],['Fá#7','Si7'],['Si7','Mi'],['Lámaj7','Sol#7']]); const all = ['Lámaj7','Sol#7','Dó#m7','Fá#7','Si7','Mi']; return { q:'Na parte B, que acorde vem depois do ' + p[0] + '?', o: tOpts(p[1], all.filter(x => x !== p[1] && x !== p[0]), 4), a: p[1], ex:'Parte B: Lámaj7 → Sol#7 → Dó#m7 → Fá#7 → Si7 → Mi. Do Sol#7 em diante, cada fundamental cai uma quinta: Sol# → Dó# → Fá# → Si → Mi.', cls:'two' }; } };
+// Sessão 3
+TG.classif = { f(){ const all = tSongChords(); const ch = rnd(2) ? all[0] : tPick(all); const sc = tScale(ch.r, ch.cand); const n = tPick(sc); const tones = tChord(ch.r, ch.q); const kp = tKeyPcs('E'); const inCh = tPcs(tones).indexOf(n.pc) >= 0, inK = kp.indexOf(n.pc) >= 0; const a = inCh ? 'nota do acorde' : inK ? 'nota do tom' : 'briga'; const sname = (ch.cand === 'pentaM' ? 'penta maior de ' : 'penta menor de ') + ch.r.n; const why = inCh ? n.n + ' está no ' + ch.c + ' (' + tL(tones) + ').' : inK ? n.n + ' não está no acorde, mas está em Mi maior: pode.' : n.n + ' não está no acorde nem em Mi maior (Mi Fá# Sol# Lá Si Dó# Ré#): briga.'; return { q:'Sobre o ' + ch.c + ' (em Mi maior), o ' + n.n + ' da ' + sname + ' é:', o:['nota do acorde','nota do tom','briga'], a, ex: why, cls:'three tx' }; } };
+TG.brigas = { f(c){ const kid = tPick(c.keys); const sd = tSec(kid, 2 + rnd(5)); const pen = tScale(sd.r, 'pentaM'); const kp = tKeyPcs(kid), cp = tPcs(sd.tones); const bad = pen.filter(x => cp.indexOf(x.pc) < 0 && kp.indexOf(x.pc) < 0); return { q:'Quantas notas da penta maior de ' + sd.r.n + ' brigam sobre o ' + sd.name + ' em ' + tKN(kid) + ' maior?', o:['0','1','2','3'], a: String(bad.length), ex:'Penta maior de ' + sd.r.n + ': ' + tL(pen) + '. ' + (bad.length ? 'Brigam: ' + tL(bad) + ', fora do acorde e fora do tom.' : 'Nenhuma briga: o que está fora do tom é nota do acorde.') + ' O ' + sd.name + ' é o ' + sd.lab + ' e vai para um acorde ' + (sd.tg.q === 'm7' ? 'menor.' : 'maior.') }; } };
+TG.naoserve = { f(c){ const kid = tPick(c.keys); const list = [tSec(kid, 4).name, tSec(kid, 5).name, tSec(kid, 6).name, tDeg(kid, 5).name]; const right = list[2]; return { q:'Em ' + tKN(kid) + ' maior, sobre qual destes dominantes a pentatônica maior do próprio acorde NÃO serve?', o: shuffle(list), a: right, ex: right + ' é o V7/vi: vai para um acorde menor, e a penta maior dele traz a 9ª e a 13ª naturais, que estão fora do tom. Nos outros (V7, V7/IV, V7/V) o alvo é maior e a penta passa.', cls:'two' }; } };
+TG.notasPenta = { f(){ const ch = tPick(tSongChords()); const sc = tScale(ch.r, ch.cand); const right = tL(sc); const alt = i => { const x = sc.slice(); const n = x[i]; x[i] = tN(n.L, n.pc + (n.a >= 1 ? -1 : 1)); return tL(x); }; const nm = (ch.cand === 'pentaM' ? 'pentatônica maior de ' : 'pentatônica menor de ') + ch.r.n; return { q:'Quais são as notas da ' + nm + '?', o: shuffle([right].concat(shuffle([1,2,3,4]).slice(0, 3).map(alt))), a: right, ex: nm + ': ' + right + (ch.cand === 'pentaM' ? ' (1 2 3 5 6).' : ' (1 b3 4 5 b7).'), cls:'txt' }; } };
+// Sessão 4
+TG.h7 = { f(c){ const R = tRelPick(c); const h = tScale(R.m, 'harmonica'), n = tScale(R.m, 'natural'); const s7 = h[6], n7 = n[6]; return { q:'Qual é o 7º grau da ' + R.m.n + ' menor harmônica?', o: tOpts(s7.n, [n7.n, T_ENH[s7.n] || '?', h[5].n], 4), a: s7.n, ex: R.m.n + ' menor natural: ' + tL(n) + '. Na harmônica o 7º sobe meio tom: ' + n7.n + ' → ' + s7.n + ', meio tom abaixo de ' + R.m.n + '. Escreve-se ' + s7.n + ' porque a letra ' + LETTERS[s7.L] + ' é a que falta na escala.' }; } };
+TG.hmuda = { f(c){ const R = tRelPick(c); const right = 'O 7º grau sobe meio tom'; return { q:'Da ' + R.m.n + ' menor natural para a ' + R.m.n + ' menor harmônica, o que muda?', o: shuffle([right, 'O 6º grau sobe meio tom', 'O 3º grau sobe meio tom', 'O 7º grau desce meio tom']), a: right, ex:'Só o 7º grau: ' + tScale(R.m, 'natural')[6].n + ' → ' + tScale(R.m, 'harmonica')[6].n + '. Assim ele vira sensível, meio tom abaixo da tônica, e o acorde do 5º grau vira dominante.', cls:'txt' }; } };
+TG.formula = { f(){ const F = { 'menor harmônica':'2 1 2 2 1 3 1', 'menor natural':'2 1 2 2 1 2 2', 'maior':'2 2 1 2 2 2 1', 'mixolídio':'2 2 1 2 2 1 2' }; const ks = Object.keys(F); const k = rnd(2) ? 'menor harmônica' : tPick(ks); const ex = ks.map(x => x + ': ' + F[x]).join(' · ') + '. Na harmônica, o 3 entre o 6º e o 7º grau é o salto característico.'; if (rnd(2)) return { q:'Qual é a fórmula em casas, numa corda só, da escala ' + k + '?', o: shuffle(ks.map(x => F[x])), a: F[k], ex, cls:'two tx' }; return { q:'A fórmula "' + F[k] + '" (em casas, numa corda só) é de qual escala?', o: shuffle(ks.slice()), a: k, ex, cls:'two tx' }; } };
+TG.enarm = { f(c){ const R = tRelPick(c); const h = tScale(R.m, 'harmonica'); const s7 = h[6]; const enh = T_ENH[s7.n]; const right = 'Cada letra aparece uma vez só na escala'; return { q:'Na ' + R.m.n + ' menor harmônica, por que se escreve ' + s7.n + ' e não ' + enh + '?', o: shuffle([right, s7.n + ' soa mais agudo que ' + enh, 'É uma convenção só do baixo', s7.n + ' fica em outra casa do braço']), a: right, ex:'No braço é a mesma casa. Mas a escala precisa de uma nota de cada letra: ' + tL(h) + '. Escrito ' + enh + ', a letra ' + LETTERS[(s7.L + 1) % 7] + ' apareceria duas vezes e faltaria a letra ' + LETTERS[s7.L] + '.', cls:'txt' }; } };
+TG.hV = { f(c){ const R = tRelPick(c); const v = tUp(R.m, 7, 4); return { q:'Na ' + R.m.n + ' menor natural, o acorde do 5º grau é ' + tCN(v, 'm7') + '. Na menor harmônica, ele vira:', o: shuffle([tCN(v, '7'), tCN(v, 'maj7'), tCN(v, 'm7b5'), tCN(v, 'm7') + ' (não muda)']), a: tCN(v, '7'), ex:'O 7º grau da escala é a 3ª desse acorde. Subindo ' + tScale(R.m, 'natural')[6].n + ' para ' + tScale(R.m, 'harmonica')[6].n + ', a 3ª fica maior: ' + tCN(v, '7') + ' (' + tL(tChord(v, '7')) + '), o dominante que chama o ' + R.m.n + '.', cls:'two' }; } };
+TG.hcasa = { f(c){ const R = tRelPick(c); const s7 = tScale(R.m, 'harmonica')[6]; const pos = []; [{ nm:'Mi', pc:4 }, { nm:'Lá', pc:9 }, { nm:'Ré', pc:2 }, { nm:'Sol', pc:7 }].forEach(s => { [0, 12].forEach(o => { const f = ((R.m.pc - s.pc) % 12 + 12) % 12 + o; if (f >= 3 && f <= 14) pos.push({ s, f }); }); }); const p = tPick(pos); const right = 'casa ' + (p.f - 1); return { q:'Na corda ' + p.s.nm + ', o ' + R.m.n + ' está na casa ' + p.f + '. Em que casa dessa corda fica a sensível ' + s7.n + ', logo abaixo?', o: shuffle([right, 'casa ' + (p.f - 2), 'casa ' + (p.f + 1), 'casa ' + (p.f - 3)]), a: right, ex:'A sensível está meio tom abaixo da tônica: uma casa atrás. Na casa ' + (p.f - 2) + ' estaria o 7º da menor natural (' + tScale(R.m, 'natural')[6].n + ').', cls:'two tx' }; } };
+TG.hnotas = { f(c){ const R = tRelPick(c); const h = tScale(R.m, 'harmonica'), n = tScale(R.m, 'natural'); const right = tL(h); const mel = h.slice(); mel[5] = tUp(R.m, 9, 5); const enh = h.slice(); enh[6] = { n: T_ENH[h[6].n] }; return { q:'Quais são as notas da ' + R.m.n + ' menor harmônica?', o: shuffle([right, tL(n), tL(mel), tL(enh)]), a: right, ex:'Menor natural com o 7º grau meio tom acima: ' + right + '. A natural é ' + tL(n) + '; com o 6º também elevado seria outra escala, a menor melódica.', cls:'txt' }; } };
+// Sessão 5
+TG.grauG = { f(c){ const kid = tPick(c.keys); const v = tV6(kid); const i = rnd(7); return { q:'Na escala do ' + v.sd.name + ' (' + v.sd.tg.r.n + ' menor harmônica), o ' + v.sc[i].n + ' é que grau contado do ' + v.sd.r.n + '?', o: tOpts(T_PD[i], T_PD.filter(x => x !== T_PD[i]), 4), a: T_PD[i], ex:'Do ' + v.sd.r.n + ': ' + v.sc.map((x, j) => x.n + ' ' + T_PD[j]).join(' · ') + '.' }; } };
+TG.grauC = { f(c){ const kid = tPick(c.keys); const v = tV6(kid); const i = rnd(7); return { q:'Agora contado do alvo: na ' + v.sd.tg.r.n + ' menor harmônica, o ' + v.sc[i].n + ' é que grau?', o: tOpts(T_PDC[i], T_PDC.filter(x => x !== T_PDC[i]), 4), a: T_PDC[i], ex:'Do ' + v.sd.tg.r.n + ': ' + [3,4,5,6,0,1,2].map(j => v.sc[j].n + ' ' + T_PDC[j]).join(' · ') + '.' }; } };
+TG.modo = { f(){ return { q:'O mixolídio b9 b13 (frígio dominante) é o modo que começa em qual grau da menor harmônica?', o: shuffle(['1º','3º','5º','7º']), a:'5º', ex:'Dó# menor harmônica a partir do 5º grau (Sol#): Sol# Lá Si# Dó# Ré# Mi Fá#. Por isso serve no V7 que vai para o Dó#m7.' }; } };
+TG.mixomuda = { f(c){ const kid = tPick(c.keys); const v = tV6(kid); const mx = tScale(v.sd.r, 'mixo'), pd = v.sc; const low = i => tUp(v.sd.r, T_SC.mixo.iv[i] - 1, i); const pair = (i, j) => mx[i].n + ' vira ' + low(i).n + ' e ' + mx[j].n + ' vira ' + low(j).n; const right = pair(1, 5); return { q:'Do ' + v.sd.r.n + ' mixolídio para o ' + v.sd.r.n + ' mixo b9 b13, o que muda?', o: shuffle([right, pair(2, 6), pair(1, 2), pair(4, 5)]), a: right, ex: v.sd.r.n + ' mixolídio: ' + tL(mx) + '. Mixo b9 b13: ' + tL(pd) + '. Só a 9ª e a 13ª descem meio tom, e as duas viram notas de ' + tKN(kid) + ' maior.', cls:'txt' }; } };
+TG.porAlvo = { f(c){ const kid = tPick(c.keys); const d = tPick([1,3,4,5,6,6]); let name, tg; if (d === 1){ name = tDeg(kid, 5).name; tg = tDeg(kid, 1); } else { const sd = tSec(kid, d); name = sd.name; tg = sd.tg; } const minor = tg.q === 'm7'; const A = 'mixolídio (a penta maior serve)', B = 'mixo b9 b13 (menor harmônica do alvo)'; return { q:'Em ' + tKN(kid) + ' maior, que escala usar no ' + name + ' → ' + tg.name + '?', o:[A, B], a: minor ? B : A, ex: tg.name + (minor ? ' é menor: o dominante pede b9 e b13, que são notas do tom.' : ' é maior: a 9ª e a 13ª naturais estão no tom, e mixolídio e penta maior funcionam.'), cls:'txt' }; } };
+TG.guia = { f(c){ const kid = tPick(c.keys); const v = tV6(kid); const tg = v.sd.tg; const opts = [[v.sc[2], tg.r, 'a 3ª do ' + v.sd.name + ' sobe meio tom para a fundamental'], [v.sc[6], tg.tones[1], 'a 7ª desce um tom para a 3ª menor'], [v.sc[1], tg.tones[2], 'a b9 desce meio tom para a 5ª']]; const p = tPick(opts); const pool = [tg.r.n, tg.tones[1].n, tg.tones[2].n, tg.tones[3].n].filter(x => x !== p[1].n); return { q:'No ' + v.sd.name + ' → ' + tg.name + ', para onde vai o ' + p[0].n + '?', o: tOpts(p[1].n, pool, 4), a: p[1].n, ex: p[0].n + ' → ' + p[1].n + ': ' + p[2] + '. Notas-guia: ' + v.sc[2].n + ' → ' + tg.r.n + ', ' + v.sc[1].n + ' → ' + tg.tones[2].n + ', ' + v.sc[6].n + ' → ' + tg.tones[1].n + '.' }; } };
+TG.cifra = { f(c){ const kid = tPick(c.keys); const v = tV6(kid); const mx = tScale(v.sd.r, 'mixo'); const right = v.sc[1].n + ' e ' + v.sc[5].n; return { q:'A cifra ' + v.sd.name + '(b9,b13) acrescenta quais notas ao acorde?', o: shuffle([right, mx[1].n + ' e ' + mx[5].n, v.sc[3].n + ' e ' + v.sc[5].n, mx[1].n + ' e ' + v.sc[5].n]), a: right, ex:'b9 = ' + v.sc[1].n + ' e b13 = ' + v.sc[5].n + ': as notas de ' + tKN(kid) + ' maior que a penta maior de ' + v.sd.r.n + ' trocava por ' + mx[1].n + ' e ' + mx[5].n + '.', cls:'two' }; } };
+// Sessão 6
+TG.mEsc = { f(){ const P = rnd(3) ? 'B' : 'A'; const it = (P === 'B' && rnd(2)) ? T_SONG.B[1] : tPick(T_SONG[P]); return { q:'Na parte ' + P + ', que escala no ' + it.c + '?', o: tOpts(it.sc, T_MAPSC.filter(x => x !== it.sc), 4), a: it.sc, ex: it.c + ' (' + it.fu + '): ' + it.sc + '. ' + (it.c === 'Sol#7' ? 'É o único acorde da música que vai para um menor vindo de fora do tom: menor harmônica do alvo.' : 'As notas dessa pentatônica estão em Mi maior ou são do próprio acorde.'), cls:'txt' }; } };
+TG.mSeq = { f(){ const P = rnd(2) ? 'A' : 'B'; const seq = T_SONG[P].map(x => x.c); const i = rnd(seq.length - 1); const right = seq[i + 1]; return { q:'Na parte ' + P + ', que acorde vem depois do ' + seq[i] + '?', o: tOpts(right, ['Dó#m7','Fá#7','Si7','Mi','Lámaj7','Sol#7'].filter(x => x !== right && x !== seq[i]), 4), a: right, ex:'Parte A: Dó#m7 → Fá#7 → Si7 → Mi. Parte B: Lámaj7 → Sol#7 → Dó#m7 → Fá#7 → Si7 → Mi.', cls:'two' }; } };
+TG.mFun = { f(){ const P = rnd(2) ? 'A' : 'B'; const it = tPick(T_SONG[P]); return { q:'Na parte ' + P + ', qual é a função do ' + it.c + '?', o: tOpts(it.fu, ['vi','V7/V','V','I','IV','V7/vi'].filter(x => x !== it.fu), 4), a: it.fu, ex:'Parte A: vi, V7/V, V, I. Parte B: IV, V7/vi, vi, V7/V, V, I.' }; } };
+TG.mFund = { f(){ const ks = Object.keys(T_FUND); const c = tPick(ks); return { q:'No mapa sugerido, onde fica a fundamental do ' + c + '?', o: tOpts(T_FUND[c], ks.filter(x => x !== c).map(x => T_FUND[x]), 4), a: T_FUND[c], ex:'Mapa: ' + ks.map(x => x + ', ' + T_FUND[x]).join('; ') + '.', cls:'txt' }; } };
+
+/* ===================== Teoria: áudio ===================== */
+// Small Web Audio synth: keys for chords, a plucked voice for lines, and a shuffle kit.
+// Every playback goes through its own gain bus, so stopping is a fade on one node.
+const TA = { ctx:null, master:null, noise:null, playing:null };
+function taInit(){
+  if (TA.ctx){ if (TA.ctx.state === 'suspended'){ try { TA.ctx.resume(); } catch(e){} } return TA.ctx; }
+  const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch(e){}
+  const ctx = new AC(); TA.ctx = ctx;
+  const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -16; comp.knee.value = 10; comp.ratio.value = 4; comp.attack.value = 0.005; comp.release.value = 0.2; comp.connect(ctx.destination);
+  const master = ctx.createGain(); master.gain.value = 0.85; master.connect(comp); TA.master = master;
+  const len = Math.floor(ctx.sampleRate * 1.2); const buf = ctx.createBuffer(1, len, ctx.sampleRate); const ch = buf.getChannelData(0); for (let i = 0; i < len; i++) ch[i] = Math.random() * 2 - 1; TA.noise = buf;
+  return ctx;
+}
+function mtof(m){ return 440 * Math.pow(2, (m - 69) / 12); }
+function taEnv(p, t, vel, dur, dec, sus, rel){
+  p.setValueAtTime(0.0001, t); p.exponentialRampToValueAtTime(vel, t + 0.008);
+  const dEnd = t + Math.min(dec, Math.max(0.03, dur * 0.8));
+  p.exponentialRampToValueAtTime(Math.max(0.0002, vel * sus), dEnd);
+  p.setTargetAtTime(0.0001, Math.max(dEnd + 0.001, t + dur), rel);
+}
+function taKeys(t, m, dur, vel, bus){
+  const ctx = TA.ctx, f = mtof(m);
+  const g = ctx.createGain(); taEnv(g.gain, t, vel, dur, 0.4, 0.38, 0.12);
+  const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = Math.min(5000, f * 7); lp.Q.value = 0.4;
+  const o1 = ctx.createOscillator(); o1.type = 'triangle'; o1.frequency.value = f;
+  const o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2; o2.detune.value = 4;
+  const g2 = ctx.createGain(); g2.gain.value = 0.22;
+  o1.connect(lp); o2.connect(g2); g2.connect(lp); lp.connect(g); g.connect(bus);
+  const end = t + dur + 0.9; o1.start(t); o2.start(t); o1.stop(end); o2.stop(end);
+}
+function taPluck(t, m, dur, vel, bus){
+  const ctx = TA.ctx, f = mtof(m);
+  const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f;
+  const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.8;
+  lp.frequency.setValueAtTime(Math.min(8000, f * 9), t); lp.frequency.exponentialRampToValueAtTime(Math.max(400, f * 2), t + 0.3);
+  const g = ctx.createGain(); taEnv(g.gain, t, vel, dur, 0.25, 0.55, 0.06);
+  o.connect(lp); lp.connect(g); g.connect(bus); o.start(t); o.stop(t + dur + 0.5);
+}
+function taKick(t, vel, bus){
+  const ctx = TA.ctx; const o = ctx.createOscillator(); o.type = 'sine';
+  o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(48, t + 0.12);
+  const g = ctx.createGain(); g.gain.setValueAtTime(vel, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.32);
+  o.connect(g); g.connect(bus); o.start(t); o.stop(t + 0.35);
+}
+function taNoise(t, dur, vel, type, freq, bus){
+  const ctx = TA.ctx; const s = ctx.createBufferSource(); s.buffer = TA.noise;
+  const fl = ctx.createBiquadFilter(); fl.type = type; fl.frequency.value = freq; fl.Q.value = 0.8;
+  const g = ctx.createGain(); g.gain.setValueAtTime(vel, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+  s.connect(fl); fl.connect(g); g.connect(bus); s.start(t, Math.random() * 0.6); s.stop(t + dur + 0.02);
+}
+function taSnare(t, vel, bus){
+  taNoise(t, 0.17, vel, 'bandpass', 1900, bus);
+  const ctx = TA.ctx; const o = ctx.createOscillator(); o.type = 'triangle';
+  o.frequency.setValueAtTime(210, t); o.frequency.exponentialRampToValueAtTime(150, t + 0.08);
+  const g = ctx.createGain(); g.gain.setValueAtTime(vel * 0.5, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
+  o.connect(g); g.connect(bus); o.start(t); o.stop(t + 0.12);
+}
+function taHat(t, vel, bus){ taNoise(t, 0.05, vel, 'highpass', 7000, bus); }
+function taDrums(ts, bars, spb, bus){
+  for (let b = 0; b < bars; b++){
+    const t = ts + b * 4 * spb;
+    for (let q = 0; q < 4; q++){ taHat(t + q * spb, q % 2 ? 0.12 : 0.16, bus); taHat(t + (q + 2/3) * spb, 0.08, bus); }
+    taKick(t, 0.55, bus); taKick(t + (1 + 2/3) * spb, 0.22, bus); taKick(t + 2 * spb, 0.45, bus);
+    taSnare(t + spb, 0.3, bus); taSnare(t + 3 * spb, 0.3, bus);
+  }
+}
+function taSchedule(p, ts, spb, bus, pb){
+  const ctx = TA.ctx;
+  p.chords.forEach(c => {
+    const t = ts + c.at * spb;
+    c.v.forEach(m => taKeys(t, m, Math.max(0.3, c.dur * spb - 0.06), 0.075, bus));
+    if (p.comp) for (let k = 2; k < c.dur; k += 4) c.v.forEach(m => taKeys(t + k * spb, m, 1.1 * spb, 0.045, bus));
+    if (pb && pb.onChord) pb.timers.push(setTimeout(() => { if (!pb.stopped) pb.onChord(c); }, Math.max(0, (t - ctx.currentTime) * 1000)));
+  });
+  (p.mel || []).forEach(n => taPluck(ts + n.at * spb, n.m, Math.max(0.1, n.dur * spb * 0.92), 0.2, bus));
+  if (p.drums) taDrums(ts, Math.round(p.beats / 4), spb, bus);
+}
+function taStop(){
+  const pb = TA.playing; if (!pb) return;
+  TA.playing = null; pb.stopped = true; pb.timers.forEach(clearTimeout);
+  try { const now = TA.ctx.currentTime; pb.bus.gain.cancelScheduledValues(now); pb.bus.gain.setValueAtTime(pb.bus.gain.value, now); pb.bus.gain.linearRampToValueAtTime(0, now + 0.08); setTimeout(() => { try { pb.bus.disconnect(); } catch(e){} }, 400); } catch(e){}
+  if (pb.onEnd) pb.onEnd();
+}
+function taPlay(p, opts){
+  const ctx = taInit(); if (!ctx){ toast('Este navegador não toca áudio.'); return null; }
+  taStop();
+  const bus = ctx.createGain(); bus.gain.value = 1; bus.connect(TA.master);
+  const spb = 60 / p.bpm;
+  const pb = { bus, timers:[], stopped:false, onChord: opts && opts.onChord, onEnd: opts && opts.onEnd };
+  TA.playing = pb;
+  let start = ctx.currentTime + 0.12;
+  if (p.count){ for (let i = 0; i < 4; i++) taHat(start + i * spb, i ? 0.22 : 0.34, bus); start += 4 * spb; }
+  const dur = p.beats * spb;
+  const cycle = ts => {
+    if (pb.stopped) return;
+    taSchedule(p, ts, spb, bus, pb);
+    if (p.loop) pb.timers.push(setTimeout(() => cycle(ts + dur), Math.max(0, (ts + dur - ctx.currentTime - 0.3) * 1000)));
+    else pb.timers.push(setTimeout(() => { if (TA.playing === pb) taStop(); }, Math.max(0, (ts + dur - ctx.currentTime) * 1000 + 700)));
+  };
+  cycle(start);
+  return pb;
+}
+
+/* Peças: voicings em Mi (MIDI). As bases em Sol sobem 3 semitons. */
+const T_TV = { 'Dó#m7':[49,56,59,64], 'Fá#7':[42,58,64,68], 'Si7':[47,57,63,66], 'Mi':[52,59,63,68], 'Lámaj7':[45,56,61,64], 'Sol#7':[44,54,60,64,69] };
+const T_LN = {
+  E:{ 'Dó#m7':'Dó#m7', 'Fá#7':'Fá#7', 'Si7':'Si7', 'Mi':'Mi', 'Lámaj7':'Lámaj7', 'Sol#7':'Sol#7' },
+  G:{ 'Dó#m7':'Mim7', 'Fá#7':'Lá7', 'Si7':'Ré7', 'Mi':'Sol', 'Lámaj7':'Dómaj7', 'Sol#7':'Si7' }
+};
+const T_LINFO = {
+  E:{ 'Dó#m7':'vi · penta menor de Dó#', 'Fá#7':'V7/V · penta maior de Fá#', 'Si7':'V · penta maior de Si', 'Mi':'I · penta maior de Mi', 'Lámaj7':'IV · penta maior de Lá', 'Sol#7':'V7/vi · Dó# menor harmônica' },
+  G:{ 'Dó#m7':'vi · penta menor de Mi', 'Fá#7':'V7/V · penta maior de Lá', 'Si7':'V · penta maior de Ré', 'Mi':'I · penta maior de Sol', 'Lámaj7':'IV · penta maior de Dó', 'Sol#7':'V7/vi · Mi menor harmônica' }
+};
+const T_LOOPS = {
+  loopA:   { t:'Parte A', d:'4 compassos: Dó#m7 · Fá#7 · Si7 · Mi', seq:[['Dó#m7',4],['Fá#7',4],['Si7',4],['Mi',4]] },
+  loopB:   { t:'Parte B', d:'8 compassos: Lámaj7 · Sol#7 · Dó#m7 · Fá#7 · Si7 (2) · Mi (2)', seq:[['Lámaj7',4],['Sol#7',4],['Dó#m7',4],['Fá#7',4],['Si7',8],['Mi',8]] },
+  loopAAB: { t:'Forma completa', d:'Parte A duas vezes e parte B, com o Sol#7 no último tempo para voltar', seq:[['Dó#m7',4],['Fá#7',4],['Si7',4],['Mi',4],['Dó#m7',4],['Fá#7',4],['Si7',4],['Mi',4],['Lámaj7',4],['Sol#7',4],['Dó#m7',4],['Fá#7',4],['Si7',8],['Mi',7],['Sol#7',1]] },
+  crit:    { t:'Trecho Sol#7 → Dó#m7', d:'Os dois compassos da semana, em loop', seq:[['Sol#7',4],['Dó#m7',4]] }
+};
+function tLoopSet(){ return S.ui.tl || (S.ui.tl = { key:'E', bpm:90, drums:true }); }
+function tLoopPiece(id){
+  const L = T_LOOPS[id], st = tLoopSet(), sh = st.key === 'G' ? 3 : 0; let at = 0;
+  const chords = L.seq.map(([c, b]) => { const ev = { at, dur:b, v:T_TV[c].map(m => m + sh), name:T_LN[st.key][c], info:T_LINFO[st.key][c] }; at += b; return ev; });
+  return { bpm: st.bpm, beats: at, chords, mel:[], drums: st.drums, comp:true, loop:true, count:true };
+}
+function tSw(i){ return Math.floor(i / 2) + (i % 2 ? 2/3 : 0); }
+function tMel(bar, notes, swing){ return notes.map((m, i) => ({ at: bar * 4 + (swing ? tSw(i) : i * 0.5), dur: swing ? (i % 2 ? 1/3 : 2/3) : 0.5, m })); }
+function tPiece(id){
+  if (T_LOOPS[id]) return tLoopPiece(id);
+  const G7 = T_TV['Sol#7'], Cm = T_TV['Dó#m7'];
+  const gc = mel => ({ bpm:80, beats:8, chords:[{ at:0, dur:4, v:G7, name:'Sol#7' }, { at:4, dur:4, v:Cm, name:'Dó#m7' }], mel: mel ? tMel(0, mel, true).concat([{ at:4, dur:2, m:73 }]) : [] });
+  const scale = (up, down) => ({ bpm:84, beats: down ? 8 : 4, chords:[{ at:0, dur: down ? 8 : 4, v:[49,56], name:'Dó#' }], mel: tMel(0, up, false).concat(down ? tMel(1, down, false) : []) });
+  switch (id){
+    case 's1_b7':  return { bpm:80, beats:8, chords:[{ at:0, dur:8, v:[47,57,63,66], name:'Si7' }], mel:[] };
+    case 's1_b7e': return { bpm:80, beats:8, chords:[{ at:0, dur:4, v:[47,57,63,66], name:'Si7' }, { at:4, dur:4, v:[52,56,59,64], name:'Mi' }], mel:[] };
+    case 's1_tri': return { bpm:72, beats:8, chords:[{ at:0, dur:4, v:[63,69], name:'Ré# + Lá' }, { at:4, dur:4, v:[64,68], name:'Mi + Sol#' }], mel:[] };
+    case 'g7c':    return gc(null);
+    case 'gm_g7':  return { bpm:80, beats:16, chords:[{ at:0, dur:4, v:[44,54,59,63], name:'Sol#m7' }, { at:4, dur:4, v:Cm, name:'Dó#m7' }, { at:8, dur:4, v:[44,54,60,63], name:'Sol#7' }, { at:12, dur:4, v:Cm, name:'Dó#m7' }], mel:[] };
+    case 'g_penta': return gc([68,70,72,75,77,75,72,70]);
+    case 'g_arp':   return gc([68,72,75,78,75,72,68,72]);
+    case 'g_harm':  return gc([68,69,72,73,75,76,75,72]);
+    case 'g_mixo':  return gc([68,70,72,73,75,77,78,80]);
+    case 'g_pd':    return gc([68,69,72,73,75,76,78,80]);
+    case 'f_penta': return { bpm:80, beats:8, chords:[{ at:0, dur:4, v:T_TV['Fá#7'], name:'Fá#7' }, { at:4, dur:4, v:T_TV['Si7'], name:'Si7' }], mel: tMel(0, [66,68,70,73,75,73,70,68], true).concat([{ at:4, dur:2, m:71 }]) };
+    case 'sc_nat':  return scale([61,63,64,66,68,69,71,73], [73,71,69,68,66,64,63,61]);
+    case 'sc_harm': return scale([61,63,64,66,68,69,72,73], [73,72,69,68,66,64,63,61]);
+    case 'sc_nat_up':  return scale([61,63,64,66,68,69,71,73], null);
+    case 'sc_harm_up': return scale([61,63,64,66,68,69,72,73], null);
+    case 'guide': { const ch = []; for (let k = 0; k < 3; k++){ ch.push({ at:k * 8, dur:4, v:G7, name:'Sol#7' }, { at:k * 8 + 4, dur:4, v:Cm, name:'Dó#m7' }); } return { bpm:80, beats:24, chords: ch, mel:[{ at:0, dur:3.5, m:72 }, { at:4, dur:3, m:73 }, { at:8, dur:3.5, m:69 }, { at:12, dur:3, m:68 }, { at:16, dur:3.5, m:66 }, { at:20, dur:3, m:64 }] }; }
+  }
+  return null;
+}
+// Generic voicing for the ear test: root between Mi2 and Ré#3, upper tones between Sol3 and Fá#4.
+function tVoice(rootPc, q){ const c = T_CH[q]; const root = 40 + ((rootPc - 4) % 12 + 12) % 12; const up = c.iv.slice(1).map(iv => 55 + ((((rootPc + iv) - 55) % 12) + 12) % 12).sort((a, b) => a - b); return [root].concat(up); }
+const T_EAR = {
+  resolve: { q:'O dominante vai para um acorde maior ou menor?', o:['maior','menor'], make(){ const kid = tPick(T_K5); const d = tPick([1,2,3,4,5,6]); let dom, tg; if (d === 1){ dom = tDeg(kid, 5); tg = tDeg(kid, 1); } else { const sd = tSec(kid, d); dom = { r: sd.r, name: sd.name }; tg = sd.tg; } const minor = tg.q === 'm7'; return { p:{ bpm:84, beats:8, chords:[{ at:0, dur:4, v:tVoice(dom.r.pc, '7'), name:dom.name }, { at:4, dur:4, v:tVoice(tg.r.pc, tg.q), name:tg.name }], mel:[] }, a: minor ? 'menor' : 'maior', ex: dom.name + ' → ' + tg.name + ' (em ' + tKN(kid) + ' maior).' }; } },
+  briga3: { q:'Sobre o Sol#7 → Dó#m7: a linha briga ou encaixa?', o:['briga','encaixa'], make(){ const bad = rnd(2); return { p: tPiece(bad ? 'g_penta' : 'g_arp'), a: bad ? 'briga' : 'encaixa', ex: bad ? 'Penta maior de Sol#: o Lá# e o Mi# raspam no Lá e no Mi do acorde.' : 'Só notas do acorde: Sol# Si# Ré# Fá#.' }; } },
+  briga:  { q:'Sobre o Sol#7 → Dó#m7: a linha briga ou encaixa?', o:['briga','encaixa'], make(){ const bad = rnd(2); return { p: tPiece(bad ? 'g_penta' : 'g_harm'), a: bad ? 'briga' : 'encaixa', ex: bad ? 'Penta maior de Sol# (Lá# e Mi# brigam).' : 'Dó# menor harmônica (Lá, Si# e Mi encaixam).' }; } },
+  natharm:{ q:'Natural ou harmônica?', o:['natural','harmônica'], make(){ const h = rnd(2); return { p: tPiece(h ? 'sc_harm_up' : 'sc_nat_up'), a: h ? 'harmônica' : 'natural', ex: h ? 'Ouviu o salto do Lá para o Si# e a sensível colada no Dó#.' : 'Lá, Si, Dó#: o 7º grau está a um tom da tônica.' }; } },
+  mixo:   { q:'Sobre o Sol#7 → Dó#m7: mixolídio ou mixo b9 b13?', o:['mixolídio','mixo b9 b13'], make(){ const m = rnd(2); return { p: tPiece(m ? 'g_mixo' : 'g_pd'), a: m ? 'mixolídio' : 'mixo b9 b13', ex: m ? 'Mixolídio: Lá# e Mi# (9ª e 13ª naturais).' : 'Mixo b9 b13: Lá e Mi, notas do tom.' }; } }
+};
+
+/* ===================== Teoria: conteúdo das sessões ===================== */
+const T_DATES = ['2026-11-03','2026-11-04','2026-11-05','2026-11-06','2026-11-07','2026-11-08','2026-11-09'];
+const T_WD = ['Ter','Qua','Qui','Sex','Sáb','Dom','Seg'];
+const T_KE = ['E','E','E','D','A','G','C'];
+const T_MODS = [
+  { id:'m1', t:'Dominante e trítono' },
+  { id:'m2', t:'Dominantes secundários' },
+  { id:'m3', t:'Teste nota a nota' },
+  { id:'m4', t:'Menor natural e harmônica' },
+  { id:'m5', t:'Mixo b9 b13 e notas-guia' },
+  { id:'m6', t:'Mapa da música' }
+];
+const T_SESS = [
+{ t:'O mapa da música e a chamada do dominante', aula:'03/11, 20:35 a 22:00; 27/10, 30:48 (graus 6 2 5 1)',
+  ideia:`<p><b>1. O campo harmônico de Mi maior.</b> Com as sete notas de Mi maior saem sete acordes de quatro notas:</p>
+<div class="t-tbl"><table><tr><th>I</th><th>ii</th><th>iii</th><th>IV</th><th>V</th><th>vi</th><th>vii</th></tr><tr><td>Mimaj7</td><td>Fá#m7</td><td>Sol#m7</td><td>Lámaj7</td><td>Si7</td><td>Dó#m7</td><td>Ré#m7(b5)</td></tr></table></div>
+<p>Dó# menor é o relativo de Mi maior: as mesmas sete notas, começando do 6º grau (três casas abaixo do Mi).</p>
+<p><b>2. A música em graus.</b></p>
+<div class="t-tbl"><table><tr><th>Parte A</th><td>Dó#m7 · Fá#7 · Si7 · Mi</td><td class="mono">6 2 5 1</td></tr><tr><th>Parte B</th><td>Lámaj7 · Sol#7 · Dó#m7 · Fá#7 · Si7 · Mi</td><td class="mono">4 3 6 2 5 1</td></tr></table></div>
+<p>Compare com o campo: o 2 e o 3 deveriam ser menores (Fá#m7, Sol#m7). Na música eles aparecem maiores com sétima (Fá#7, Sol#7). São os dois intrusos, e a semana é sobre eles.</p>
+<p><b>3. O acorde dominante.</b> Tríade maior com sétima menor: 1 3 5 b7. O dominante de Mi é o Si7: Si Ré# Fá# Lá.</p>
+<p><b>4. Por que ele chama.</b> Entre a 3ª (Ré#) e a 7ª (Lá) do Si7 há um trítono: três tons, seis casas, o intervalo mais instável. Ele se desfaz com dois meios-tons: o Ré# sobe para Mi (a sensível vai para a tônica) e o Lá desce para Sol# (a 7ª vai para a 3ª do Mi). A fundamental cai uma quinta, de Si para Mi.</p>
+<p class="tip">Dominante é um acorde maior com sétima que quer cair uma quinta.</p>`,
+  ouvir:[ { t:'Si7 sem resolver', d:'Dois compassos de Si7. A frase fica no ar.', p:'s1_b7' }, { t:'Si7 → Mi', d:'A mesma chamada, agora resolvida.', p:'s1_b7e' }, { t:'Só o trítono: Ré# e Lá → Mi e Sol#', d:'Dois meios-tons: o Ré# sobe, o Lá desce.', p:'s1_tri' }, { t:'Parte A em loop', d:'Cante as fundamentais junto: Dó#, Fá#, Si, Mi (6 2 5 1). Toque de novo para parar.', p:'loopA' } ],
+  ear:[], revT:'Ponto de partida', rev:['grau','campo'], revKeys:['E'], gens:['grau','campo','intruso','v7','notasV7','sens','setima','trit'], keys:T_KE,
+  baixo:'Com a base do Maca, toque só as fundamentais, uma por compasso, dizendo o grau em voz alta: parte A 6 2 5 1, parte B 4 3 6 2 5 1. Depois, sem base, o arpejo do Si7 (Si Ré# Fá# Lá) resolvendo no Mi: o Ré# sobe meio tom.' },
+
+{ t:'Dominantes secundários', aula:'03/11, 20:35 a 23:01; 27/10, 37:50 (o Fá#7)',
+  ideia:`<p><b>1. Um dominante para cada acorde.</b> O Si7 é o dominante de Mi. Mas qualquer acorde maior ou menor do campo pode ganhar um dominante só dele, emprestado de outro tom: o dominante secundário. Escreve-se V7/x e lê-se "cinco do x".</p>
+<p><b>2. Receita.</b> Escolha o acorde-alvo, suba uma quinta justa a partir da fundamental dele e monte ali um acorde maior com sétima menor.</p>
+<p><b>3. No braço.</b> A fundamental do dominante fica na mesma casa da corda vizinha mais grave. Alvo Dó# na corda Lá, casa 4: dominante Sol# na corda Mi, casa 4. Se o alvo estiver na corda Mi, use a corda Lá, duas casas à frente.</p>
+<div class="t-fbslot" data-fb="pares"></div>
+<p><b>4. Os cinco de Mi maior.</b></p>
+<div class="t-tbl"><table><tr><th>Alvo</th><th>Dominante</th><th>Notas</th><th>Fora do tom</th></tr>
+<tr><td>ii Fá#m7</td><td>Dó#7 (V7/ii)</td><td>Dó# Mi# Sol# Si</td><td>Mi#</td></tr>
+<tr><td>iii Sol#m7</td><td>Ré#7 (V7/iii)</td><td>Ré# Fá## Lá# Dó#</td><td>Fá## e Lá#</td></tr>
+<tr><td>IV Lámaj7</td><td>Mi7 (V7/IV)</td><td>Mi Sol# Si Ré</td><td>Ré</td></tr>
+<tr><td>V Si7</td><td>Fá#7 (V7/V)</td><td>Fá# Lá# Dó# Mi</td><td>Lá#</td></tr>
+<tr><td>vi Dó#m7</td><td>Sol#7 (V7/vi)</td><td>Sol# Si# Ré# Fá#</td><td>Si#</td></tr></table></div>
+<p>Na maioria, a nota de fora é a 3ª do dominante, meio tom abaixo da fundamental do alvo: uma sensível emprestada. No Mi7 é a 7ª (Ré), que desce para o Dó# do Lámaj7. Fá## é o Sol escrito com a letra Fá, porque a 3ª de Ré# tem que ser um Fá. O vii (Ré#m7(b5)) não recebe dominante: acorde diminuto não serve de alvo.</p>
+<p><b>5. Na música.</b> O Fá#7 é o V7/V e prepara o Si7 (aula de 27/10). O Sol#7 é o V7/vi e prepara o Dó#m7 (aula de 03/11). Do Sol#7 em diante, a parte B desce pelo ciclo de quintas: Sol# → Dó# → Fá# → Si → Mi. Cada acorde chama o seguinte.</p>
+<p class="tip">Dominante secundário: uma quinta acima do alvo, acorde maior com sétima. No baixo, mesma casa, corda vizinha mais grave.</p>`,
+  ouvir:[ { t:'Si7 → Mi (V7 → I)', d:'A chamada que você já conhece.', p:'s1_b7e' }, { t:'Sol#7 → Dó#m7 (V7/vi → vi)', d:'A mesma chamada, agora para um acorde menor.', p:'g7c' }, { t:'Sol#m7 → Dó#m7, depois Sol#7 → Dó#m7', d:'Qual chama mais? Só muda uma nota: Si no primeiro, Si# no segundo.', p:'gm_g7' }, { t:'Parte B em loop', d:'Cante as fundamentais: Lá, Sol#, Dó#, Fá#, Si, Mi.', p:'loopB' } ],
+  ear:['resolve'], rev:['notasV7','sens','trit','intruso'], gens:['sec','sec','alvo','fora','braco','analise','ciclo'], keys:T_KE,
+  baixo:'Com a base, as fundamentais da parte B dizendo a função: quatro, cinco do seis, seis, cinco do cinco, cinco, um. Depois, sem base, os pares dominante → alvo na mesma casa: Sol# (corda Mi, 4) → Dó# (corda Lá, 4); Fá# (Mi, 2) → Si (Lá, 2) → Mi (Ré, 2).' },
+
+{ t:'O teste nota a nota', aula:'03/11, 22:30 a 24:04',
+  ideia:`<p><b>1. A pergunta.</b> Dá para usar a pentatônica maior de Sol# no Sol#7? O Maca respondeu com um teste: cada nota da escala candidata é <b>nota do acorde</b>, <b>nota do tom</b> (Mi maior) ou nenhuma das duas. Essa última <b>briga</b>.</p>
+<p><b>2. O teste no Sol#7.</b> Pentatônica maior de Sol#: Sol# Lá# Si# Ré# Mi#.</p>
+<div class="t-tbl"><table><tr><th>Nota</th><th>No Sol#7?</th><th>Em Mi maior?</th><th>Veredito</th></tr>
+<tr><td>Sol#</td><td>sim (1)</td><td>sim</td><td>ok</td></tr>
+<tr><td>Lá#</td><td>não</td><td>não, o tom tem Lá</td><td><b>briga</b></td></tr>
+<tr><td>Si#</td><td>sim (3)</td><td>não</td><td>ok, é do acorde</td></tr>
+<tr><td>Ré#</td><td>sim (5)</td><td>sim</td><td>ok</td></tr>
+<tr><td>Mi#</td><td>não</td><td>não, o tom tem Mi</td><td><b>briga</b></td></tr></table></div>
+<p>Duas brigas em cinco notas: não serve. O Lá# vem logo depois do Lá do Lámaj7, e o Mi# raspa no Mi, que é a terça do Dó#m7 de destino. Na aula ele chamou o Lá# de Sib e o Mi# de Fá: são as mesmas casas.</p>
+<div class="t-fbslot" data-fb="pentaG"></div>
+<p><b>3. Contraprova no Fá#7.</b> Pentatônica maior de Fá#: Fá# Sol# Lá# Dó# Ré#. Só o Lá# está fora de Mi maior, e ele é a 3ª do próprio Fá#7. Passa. Por isso a penta maior funciona no Fá#7.</p>
+<p><b>4. O resto da música passa.</b> Penta menor de Dó# (Dó# Mi Fá# Sol# Si) e penta maior de Si, de Lá e de Mi: todas as notas estão em Mi maior.</p>
+<p class="tip">O Sol#7 é o único acorde da música que pede outra escala. Amanhã você descobre qual.</p>`,
+  ouvir:[ { t:'Sol#7 → Dó#m7 com a penta maior de Sol#', d:'Onde arranha? Preste atenção no Lá# e no Mi#.', p:'g_penta' }, { t:'Sol#7 → Dó#m7 só com o arpejo', d:'Só as notas do acorde (Sol# Si# Ré# Fá#): nada briga.', p:'g_arp' }, { t:'Fá#7 → Si7 com a penta maior de Fá#', d:'Aqui a pentatônica maior passa.', p:'f_penta' } ],
+  ear:['briga3'], rev:['sec','alvo','fora','braco','analise'], gens:['classif','classif','classif','brigas','brigas','naoserve','notasPenta'], keys:T_KE,
+  baixo:'Com a base do Maca: no compasso do Sol#7, toque de propósito a penta maior de Sol# e ouça o choque. Na volta seguinte, só o arpejo Sol# Si# Ré# Fá#. No Fá#7, a penta maior de Fá# no desenho funcional, até a nona.' },
+
+{ t:'Menor natural e menor harmônica', aula:'03/11, 24:04 a 27:29',
+  ideia:`<p><b>1. O caminho do Maca.</b> Quando o dominante resolve num acorde menor, pense na escala desse acorde menor. O Sol#7 resolve no Dó#m7: comece pela Dó# menor natural, Dó# Ré# Mi Fá# Sol# Lá Si (as notas de Mi maior começando do 6º grau).</p>
+<p><b>2. Compare com o acorde.</b> O Sol#7 tem Sol# Si# Ré# Fá#. A única nota da Dó# menor natural que bate de frente com ele é o Si, porque o acorde tem Si#. Troque o Si pelo Si#:</p>
+<p class="big">Dó# menor harmônica: Dó# Ré# Mi Fá# Sol# Lá Si#</p>
+<div class="t-tbl"><table><tr><th></th><th>Graus</th><th>Casas numa corda</th></tr>
+<tr><td>Menor natural</td><td class="mono">1 2 b3 4 5 b6 b7</td><td class="mono">2 1 2 2 1 2 2</td></tr>
+<tr><td>Menor harmônica</td><td class="mono">1 2 b3 4 5 b6 7</td><td class="mono">2 1 2 2 1 3 1</td></tr></table></div>
+<p>O salto de três casas, do Lá para o Si#, é o som característico, meio árabe, meio flamenco: o "som de harmônica" da aula.</p>
+<p><b>3. Por que ela existe.</b> Na menor natural, o acorde do 5º grau é Sol#m7 (Sol# Si Ré# Fá#), que chama pouco: o Si está a um tom do Dó#. Com o 7º grau elevado, o Si# fica a meio tom do Dó#, vira sensível, e o acorde do 5º grau vira Sol#7, que chama de verdade.</p>
+<p><b>4. Por que Si# e não Dó.</b> Uma escala tem uma nota de cada letra: Dó# Ré# Mi Fá# Sol# Lá Si#. Escrito como Dó, haveria Dó e Dó# e nenhum Si. No braço é a mesma casa. É a regra do Sib e do Lá# da aula de 27/10.</p>
+<p><b>5. O acorde da aula.</b> Sol# na corda Mi (casa 4), Fá# na corda Ré (casa 4), Si# na corda Sol (casa 5): 1, b7 e 3, o esqueleto do Sol#7.</p>
+<div class="t-fbslot" data-fb="shell"></div>
+<p><b>6. No braço.</b> Na corda Lá, da casa 4 à 16, com graus (o Si# também aparece na casa 3, logo abaixo do Dó#):</p>
+<div class="t-fbslot" data-fb="cordaLa"></div>
+<p>E numa caixa, casas 2 a 7:</p>
+<div class="t-fbslot" data-fb="caixa"></div>
+<p class="tip">A escala de um acorde de fora do tom é o tom mais a nota que o acorde exige. No Sol#7: Mi maior com o Si trocado por Si#.</p>`,
+  ouvir:[ { t:'Dó# menor natural', d:'Subindo e descendo, sobre um Dó# grave.', p:'sc_nat' }, { t:'Dó# menor harmônica', d:'Ouça o salto do Lá para o Si# e a sensível puxando para o Dó#.', p:'sc_harm' }, { t:'Sol#7 → Dó#m7: penta maior de Sol#', d:'A que briga.', p:'g_penta' }, { t:'Sol#7 → Dó#m7: Dó# menor harmônica', d:'A que encaixa. Mesmo desenho rítmico, outras notas.', p:'g_harm' } ],
+  ear:['natharm','briga'], rev:['classif','brigas','sec','fora'], gens:['h7','hmuda','formula','enarm','hV','hcasa','hnotas'], keys:T_KE,
+  baixo:'Mapeie a Dó# menor harmônica na corda Lá, da casa 4 à 16, falando os graus (1 2 b3 4 5 b6 7), depois sem falar, como no mapeamento horizontal. Depois a caixa das casas 2 a 7. Com a base: no Sol#7, um fragmento com o Si#, por exemplo Si# Dó# Ré# Mi Fá# Sol# (corda Lá, casas 3 4 6 7; corda Ré, casas 4 e 6).' },
+
+{ t:'O nome do modo e as notas-guia', aula:'03/11, 27:29 a 30:59',
+  ideia:`<p><b>1. As mesmas notas, outra referência.</b> Comece a Dó# menor harmônica no Sol#: Sol# Lá Si# Dó# Ré# Mi Fá#. Contadas do Sol#: 1 b9 3 11 5 b13 b7.</p>
+<div class="t-tbl"><table><tr><th>Nota</th><td>Sol#</td><td>Lá</td><td>Si#</td><td>Dó#</td><td>Ré#</td><td>Mi</td><td>Fá#</td></tr>
+<tr><th>do Sol#</th><td>1</td><td>b9</td><td>3</td><td>11</td><td>5</td><td>b13</td><td>b7</td></tr>
+<tr><th>do Dó#</th><td>5</td><td>b6</td><td>7</td><td>1</td><td>2</td><td>b3</td><td>4</td></tr></table></div>
+<p><b>2. Dois nomes para a mesma escala.</b> <b>Mixolídio b9 b13</b>: o mixolídio de Sol# seria Sol# Lá# Si# Dó# Ré# Mi# Fá#; abaixe a 9ª e a 13ª e chega lá. A 9ª e a 13ª naturais são justamente o Lá# e o Mi#, as duas brigas de quinta-feira. <b>Frígio dominante</b>, o "frígio maior" da aula: o frígio de Sol# tem terça menor; com a terça maior, chega lá. É o 5º modo da menor harmônica.</p>
+<p><b>3. A cifra conta a escala.</b> Nas cifras publicadas o acorde aparece como Sol#7(b9,b13): o acorde com as duas notas que mudam.</p>
+<p><b>4. Pelo alvo ou pela fundamental.</b> O Maca ensina pelo alvo: "no Sol#7, estou em Dó# menor harmônica". No baixo é o caminho mais rápido, porque é o desenho de Dó# menor com uma nota trocada. Pensar pela fundamental (Sol# mixo b9 b13) ajuda a saber que grau cada nota é no acorde.</p>
+<div class="t-fbslot" data-fbx="modo"></div>
+<p><b>5. Regra prática.</b> Dominante que vai para acorde maior (V7, V7/IV, V7/V): 9ª e 13ª naturais, mixolídio, penta maior. Dominante que vai para o vi ou o iii: b9 e b13, menor harmônica do alvo. Na dúvida, o teste nota a nota decide.</p>
+<p><b>6. Notas-guia para a linha de baixo.</b> Na passagem Sol#7 → Dó#m7: Si# → Dó# (a 3ª sobe meio tom para a fundamental; a mais forte), Lá → Sol# (a b9 desce meio tom para a 5ª) e Fá# → Mi (a 7ª desce um tom para a 3ª menor). Terminar o compasso do Sol#7 no Si# e cair no Dó# no tempo 1 é o jeito mais claro de dizer a harmonia.</p>
+<p class="tip">Sol#7 → Dó#m7: Dó# menor harmônica, que é o Sol# mixo b9 b13. Mire o Si# no fim do compasso.</p>`,
+  ouvir:[ { t:'Sol# mixolídio sobre Sol#7 → Dó#m7', d:'Lá# e Mi#: a 9ª e a 13ª naturais brigam.', p:'g_mixo' }, { t:'Sol# mixo b9 b13 sobre Sol#7 → Dó#m7', d:'Lá e Mi: só duas notas mudam, e encaixa.', p:'g_pd' }, { t:'Notas-guia', d:'Si# → Dó#, depois Lá → Sol#, depois Fá# → Mi.', p:'guide' } ],
+  ear:['mixo','resolve'], rev:['h7','hmuda','hV','brigas'], gens:['grauG','grauC','modo','mixomuda','porAlvo','guia','cifra'], keys:T_KE,
+  baixo:'Com a base: no compasso do Sol#7, arpejo Sol# Si# Ré# Fá# terminando no Si# (corda Lá, casa 3) para cair no Dó# (casa 4) no tempo 1. Na volta seguinte, Lá (corda Mi, casa 5) descendo para Sol# (casa 4).' },
+
+{ t:'O mapa da música inteira', aula:'03/11, 30:59 a 36:16 e 40:41 a 59:55',
+  ideia:`<p><b>1. O mapa que ele pediu.</b> Cada acorde com a sua escala e o lugar da fundamental (corda, casa):</p>
+<div class="t-tbl"><table>
+<tr><th>Parte A</th><th>Escala</th><th>Fund.</th></tr>
+<tr><td>Dó#m7 <span class="muted">vi</span></td><td>penta menor de Dó#</td><td>Lá, 4</td></tr>
+<tr><td>Fá#7 <span class="muted">V7/V</span></td><td>penta maior de Fá#</td><td>Mi, 2</td></tr>
+<tr><td>Si7 <span class="muted">V</span></td><td>penta maior de Si</td><td>Lá, 2</td></tr>
+<tr><td>Mi <span class="muted">I</span></td><td>penta maior de Mi</td><td>Mi solta</td></tr>
+<tr><th>Parte B</th><th></th><th></th></tr>
+<tr><td>Lámaj7 <span class="muted">IV</span></td><td>penta maior de Lá</td><td>Mi, 5</td></tr>
+<tr><td><b>Sol#7</b> <span class="muted">V7/vi</span></td><td><b>Dó# menor harmônica</b></td><td>Mi, 4</td></tr>
+<tr><td>Dó#m7 <span class="muted">vi</span></td><td>penta menor de Dó#</td><td>Lá, 4</td></tr>
+<tr><td>Fá#7 <span class="muted">V7/V</span></td><td>penta maior de Fá#</td><td>Mi, 2</td></tr>
+<tr><td>Si7 ×2 <span class="muted">V</span></td><td>penta maior de Si</td><td>Lá, 2</td></tr>
+<tr><td>Mi ×2 <span class="muted">I</span></td><td>penta maior de Mi</td><td>Mi solta</td></tr>
+</table></div>
+<p class="small muted">Cifras: C#m7 F#7 B7 E | Amaj7 G#7 C#m7 F#7 B7 E. "×2" são dois compassos. No Mi, dá para usar também a corda Lá, casa 7, no agudo.</p>
+<p>Forma: parte A duas vezes (8 compassos) e parte B (8 compassos). Nas cifras, o Sol#7 aparece também no último tempo, antes de voltar para a parte A. Confira na base do Maca.</p>
+<p><b>2. Os desenhos (pentatônica funcional).</b> Maior: três notas na primeira corda (1 2 3), duas na seguinte (5 6), oitava e nona na outra; dedo 1 na tônica; vá até a nona e volte. Menor: tônica com dedo 3 ou 4, terça menor passada para a corda vizinha mais aguda, só até a oitava; a quinta no grave e a sétima atrás da tônica servem de apoio. Toque em cada acorde:</p>
+<div class="t-fbslot" data-fbx="mapa"></div>
+<p class="small muted">Desenhos reconstruídos a partir da descrição das aulas (27/10 e 03/11, 13:02 a 18:09). Se algum não bater com o que ele mostrou, vale o do vídeo.</p>
+<p><b>3. A ordem do Maca.</b> Primeiro toque o mapa sobre a base, só passando pelas notas de cada desenho no tempo, para ouvir cada escala casando com o acorde. Depois crie. Cada frase fica no desenho do acorde em que você está e caminha para uma nota do próximo.</p>
+<p><b>4. A rítmica (shuffle).</b> Conte 1 2 3 4; as duas primeiras notas já entram dentro do tempo 1. Na contagem da base, ele marca dois tempos e depois os quatro. Decida o dedo antes de tocar.</p>`,
+  ouvir:[ { t:'Parte A em loop', d:'Siga o nome do acorde que aparece em Bases da trilha.', p:'loopA' }, { t:'Parte B em loop', d:'No Sol#7, pense em Dó# menor harmônica.', p:'loopB' }, { t:'Forma completa (A A B)', d:'Cante as fundamentais e diga a escala de cada acorde antes de ele chegar.', p:'loopAAB' }, { t:'Trecho Sol#7 → Dó#m7', d:'Os dois compassos da semana, em loop.', p:'crit' } ],
+  ear:[], rev:['grauG','guia','porAlvo','h7','sec'], gens:['mEsc','mEsc','mSeq','mFun','mFund'], keys:['E'],
+  baixo:'Mapa completo com a base do Maca a 0,75: parte A duas vezes e parte B, sem parar e sem trocar a ordem. Depois a 1,0. Depois a mesma rítmica de shuffle com notas livres dentro de cada desenho, que é a meta que ele deixou.' },
+
+{ t:'Revisão geral e outro tom', aula:'a semana inteira',
+  ideia:`<p><b>1. A semana em seis linhas.</b></p>
+<ol>
+<li>Dominante: acorde maior com sétima que quer cair uma quinta; o trítono entre a 3ª e a 7ª é a tensão.</li>
+<li>Dominante secundário: o V7 de outro acorde do campo, uma quinta acima do alvo (no baixo, mesma casa, corda vizinha mais grave).</li>
+<li>Escolher a escala: teste nota a nota (nota do acorde, nota do tom ou briga).</li>
+<li>Dominante que vai para acorde maior: 9ª e 13ª naturais (mixolídio, penta maior).</li>
+<li>Dominante que vai para o vi ou o iii: b9 e b13 (menor harmônica do alvo).</li>
+<li>Na música: Sol#7 → Dó#m7 com Dó# menor harmônica, mirando o Si# → Dó#.</li>
+</ol>
+<p><b>2. Em Sol maior</b>, o tom que ele citou para voz feminina. Parte A: Mim7 · Lá7 · Ré7 · Sol (6 2 5 1). Parte B: Dómaj7 · Si7 · Mim7 · Lá7 · Ré7 · Sol (4 3 6 2 5 1). O V7/vi é o Si7, e a escala dele é a Mi menor harmônica: Mi Fá# Sol Lá Si Dó Ré#. Nota-guia: Ré# → Mi. As bases da trilha tocam em Sol também.</p>
+<p><b>3. Para a aula de terça.</b> No fim desta sessão, avalie cada parte da semana com um toque. O que ficar em "Travei" ou "Com esforço" vira pergunta para o Maca.</p>`,
+  ouvir:[ { t:'Parte B em loop', d:'Troque o tom para Sol em Bases da trilha e cante: Dó, Si, Mi, Lá, Ré, Sol.', p:'loopB' }, { t:'Notas-guia em Mi', d:'Si# → Dó#, Lá → Sol#, Fá# → Mi.', p:'guide' } ],
+  ear:['resolve','briga','natharm','mixo'], revT:'Diagnóstico rápido', rev:['sec','brigas','h7','grauG','mEsc'], gens:['sec','alvo','fora','brigas','porAlvo','h7','hV','guia','grauG','mixomuda','analise','cifra'], keys:['E','G','G','D','A','C'], n:12, mods:true,
+  baixo:'Parte B em Sol com a base da trilha (tom Sol): fundamentais e, no Si7, um fragmento da Mi menor harmônica com o Ré# (corda Lá, casa 6, resolvendo no Mi da casa 7). Se sobrar tempo, o mapa completo em Mi com a base do Maca a 1,0.' }
+];
+
+/* Diagramas do braço */
+const T_STR = { E:{ pc:4, nm:'Mi' }, A:{ pc:9, nm:'Lá' }, D:{ pc:2, nm:'Ré' }, G:{ pc:7, nm:'Sol' } };
+function tLeg(items){ return items.map(([k, t]) => '<span><i class="lg-' + k + '"></i>' + t + '</span>').join(''); }
+function tMarksScale(root, scId, from, to, kind, label, only){
+  const sc = tScale(root, scId); const marks = [];
+  (only || ['E','A','D','G']).forEach(s => { for (let f = from; f <= to; f++){ const pc = (T_STR[s].pc + f) % 12; const i = sc.findIndex(x => x.pc === pc); if (i >= 0) marks.push({ s, f, k: kind(sc[i], i), l: label(sc[i], i) }); } });
+  return marks;
+}
+const T_DG = ['1','2','b3','4','5','b6','7'];
+const T_FB = {
+  pares: () => ({ from:0, to:6, marks:[ { s:'E', f:4, k:'c', l:'Sol#' }, { s:'A', f:4, k:'r', l:'Dó#' }, { s:'E', f:2, k:'c', l:'Fá#' }, { s:'A', f:2, k:'r', l:'Si' }, { s:'D', f:2, k:'r', l:'Mi' } ], leg: tLeg([['c','dominante'],['r','alvo']]) + '<span>Sol# → Dó#; Fá# → Si → Mi</span>' }),
+  pentaG: () => ({ from:1, to:8, marks: tMarksScale(tN(4,8), 'pentaM', 1, 8, n => n.n === 'Sol#' ? 'r' : (n.n === 'Lá#' || n.n === 'Mi#') ? 'x' : 'c', n => n.n), leg: tLeg([['r','fundamental'],['c','nota do acorde'],['x','briga']]) }),
+  shell: () => ({ from:2, to:7, marks:[ { s:'E', f:4, k:'r', l:'Sol#' }, { s:'D', f:4, k:'c', l:'Fá#' }, { s:'G', f:5, k:'n', l:'Si#' } ], leg: tLeg([['r','1 (Sol#)'],['c','b7 (Fá#)'],['n','3 (Si#)']]) }),
+  cordaLa: () => ({ from:3, to:16, only:['A'], marks: tMarksScale(tN(0,1), 'harmonica', 3, 16, (n, i) => i === 0 ? 'r' : i === 6 ? 'n' : 's', (n, i) => T_DG[i], ['A']), leg: tLeg([['r','Dó# (1)'],['n','Si# (7), a sensível']]) }),
+  caixa: () => ({ from:2, to:7, marks: tMarksScale(tN(0,1), 'harmonica', 2, 7, (n, i) => i === 0 ? 'r' : i === 6 ? 'n' : 's', n => n.n), leg: tLeg([['r','Dó#'],['n','Si#']]) })
+};
+// Desenhos da pentatônica funcional por acorde (reconstruídos da descrição das aulas).
+const T_SHAPES = {
+  'Dó#m7': { from:1, to:7, txt:'Penta menor funcional: tônica na corda Lá, casa 4, com dedo 3 ou 4; terça menor passada para a corda Ré; quinta no grave e sétima atrás da tônica; só até a oitava.', marks:[ { s:'E', f:4, l:'5', n:'Sol#' }, { s:'A', f:2, l:'b7', n:'Si' }, { s:'A', f:4, l:'1', n:'Dó#', k:'r' }, { s:'D', f:2, l:'b3', n:'Mi' }, { s:'D', f:4, l:'4', n:'Fá#' }, { s:'D', f:6, l:'5', n:'Sol#' }, { s:'G', f:4, l:'b7', n:'Si' }, { s:'G', f:6, l:'1', n:'Dó#', k:'r' } ] },
+  'Fá#7': { from:1, to:7, txt:'Penta maior funcional: 1 2 3 na corda Mi com dedo 1 na tônica, 5 6 na corda Lá, oitava e nona na corda Ré. Até a nona e volta.', marks:[ { s:'E', f:2, l:'1', n:'Fá#', k:'r' }, { s:'E', f:4, l:'2', n:'Sol#' }, { s:'E', f:6, l:'3', n:'Lá#' }, { s:'A', f:4, l:'5', n:'Dó#' }, { s:'A', f:6, l:'6', n:'Ré#' }, { s:'D', f:4, l:'1', n:'Fá#', k:'r' }, { s:'D', f:6, l:'9', n:'Sol#' } ] },
+  'Si7': { from:1, to:7, txt:'O mesmo desenho do Fá#, uma corda acima: tônica na corda Lá, casa 2.', marks:[ { s:'A', f:2, l:'1', n:'Si', k:'r' }, { s:'A', f:4, l:'2', n:'Dó#' }, { s:'A', f:6, l:'3', n:'Ré#' }, { s:'D', f:4, l:'5', n:'Fá#' }, { s:'D', f:6, l:'6', n:'Sol#' }, { s:'G', f:4, l:'1', n:'Si', k:'r' }, { s:'G', f:6, l:'9', n:'Dó#' } ] },
+  'Mi': { from:0, to:6, txt:'Com a corda Mi solta, no grave. No agudo, o mesmo desenho começa na corda Lá, casa 7.', marks:[ { s:'E', f:0, l:'1', n:'Mi', k:'r' }, { s:'E', f:2, l:'2', n:'Fá#' }, { s:'E', f:4, l:'3', n:'Sol#' }, { s:'A', f:2, l:'5', n:'Si' }, { s:'A', f:4, l:'6', n:'Dó#' }, { s:'D', f:2, l:'1', n:'Mi', k:'r' }, { s:'D', f:4, l:'9', n:'Fá#' } ] },
+  'Lámaj7': { from:4, to:10, txt:'Penta maior funcional de Lá: dedo 1 na corda Mi, casa 5.', marks:[ { s:'E', f:5, l:'1', n:'Lá', k:'r' }, { s:'E', f:7, l:'2', n:'Si' }, { s:'E', f:9, l:'3', n:'Dó#' }, { s:'A', f:7, l:'5', n:'Mi' }, { s:'A', f:9, l:'6', n:'Fá#' }, { s:'D', f:7, l:'1', n:'Lá', k:'r' }, { s:'D', f:9, l:'9', n:'Si' } ] },
+  'Sol#7': { from:2, to:7, txt:'Dó# menor harmônica na caixa das casas 3 a 7, com graus contados do Sol#. O Si# (3) é a nota obrigatória; mire nele no fim do compasso para cair no Dó#.', marks:[ { s:'E', f:4, l:'1', n:'Sol#', k:'r' }, { s:'E', f:5, l:'b9', n:'Lá' }, { s:'A', f:3, l:'3', n:'Si#', k:'n' }, { s:'A', f:4, l:'11', n:'Dó#' }, { s:'A', f:6, l:'5', n:'Ré#' }, { s:'A', f:7, l:'b13', n:'Mi' }, { s:'D', f:4, l:'b7', n:'Fá#' }, { s:'D', f:6, l:'1', n:'Sol#', k:'r' }, { s:'D', f:7, l:'b9', n:'Lá' }, { s:'G', f:5, l:'3', n:'Si#', k:'n' }, { s:'G', f:6, l:'11', n:'Dó#' } ] }
+};
+
+/* ===================== Teoria: interface ===================== */
+const LS_TAB = 'bass-studies-tab';
+let tRendered = 0, tTimerInt = null, tLoopsBound = false;
+let tSS = { rev:{ right:0, asked:0 }, drill:{ right:0, asked:0 }, ear:{ right:0, asked:0 } };
+function tUI(){ return S.ui.t || (S.ui.t = { sess:0, fbm:'deg', map:'Sol#7', modo:'g' }); }
+function tToday(){ const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function tRec(i){ return (S.data.harm && S.data.harm.s[String(i)]) || null; }
+function tNextSess(){ for (let i = 1; i <= 7; i++){ const r = tRec(i); if (!r || !r.done) return i; } return 7; }
+function tDateLabel(i){ return T_WD[i - 1] + ' ' + T_DATES[i - 1].slice(8) + '/11'; }
+
+function tFbHtml(spec){
+  const strs = (spec.only || ['G','D','A','E']).slice(); const from = spec.from, to = spec.to, n = to - from + 1, dots = [3,5,7,9,12,15];
+  let h = '<div class="fb-wrap"><div class="fb" style="grid-template-columns:34px repeat(' + n + ',34px)"><div class="hd"></div>';
+  for (let f = from; f <= to; f++) h += '<div class="hd' + (dots.indexOf(f) >= 0 ? ' mark' : '') + '">' + f + '</div>';
+  strs.forEach(s => {
+    h += '<div class="lab">' + T_STR[s].nm + '</div>';
+    for (let f = from; f <= to; f++){
+      const m = spec.marks.find(x => x.s === s && x.f === f);
+      if (!m) h += '<div class="fr off' + (f === 0 ? ' nut' : '') + '">·</div>';
+      else h += '<div class="fr nt t-' + (m.k || 's') + (f === 0 ? ' nut' : '') + '" title="corda ' + T_STR[s].nm + ', casa ' + f + (m.n ? ': ' + m.n : '') + '">' + m.l + '</div>';
+    }
+  });
+  h += '</div></div>';
+  if (spec.leg) h += '<div class="fb-legend">' + spec.leg + '</div>';
+  return h;
+}
+function tFill(root){
+  root.querySelectorAll('[data-fb]').forEach(el => { const f = T_FB[el.dataset.fb]; if (f) el.innerHTML = tFbHtml(f()); });
+  root.querySelectorAll('[data-fbx="modo"]').forEach(el => tModoBox(el));
+  root.querySelectorAll('[data-fbx="mapa"]').forEach(el => tMapaBox(el));
+}
+function tModoBox(el){
+  const u = tUI(); const lab = { g:'Graus do Sol#', c:'Graus do Dó#', n:'Notas' };
+  const sc = tScale(tN(4,8), 'frigdom');
+  const marks = tMarksScale(tN(4,8), 'frigdom', 2, 7, (x, i) => i === 0 ? 'r' : i === 2 ? 'n' : (i === 4 || i === 6) ? 'c' : 's', (x, i) => u.modo === 'g' ? T_PD[i] : u.modo === 'c' ? T_PDC[i] : x.n);
+  el.innerHTML = '<div class="chips"></div>' + tFbHtml({ from:2, to:7, marks, leg: tLeg([['r','Sol# (1)'],['n','Si# (3)'],['c','Ré# e Fá# (5 e b7)'],['s','tensões: Lá, Dó#, Mi']]) }) + '<p class="small muted">' + tL(sc) + '</p>';
+  const ch = el.querySelector('.chips');
+  Object.keys(lab).forEach(k => ch.appendChild(chip(lab[k], u.modo === k, () => { u.modo = k; tModoBox(el); }, 'sm')));
+}
+function tMapaBox(el){
+  const u = tUI(); const order = ['Dó#m7','Fá#7','Si7','Mi','Lámaj7','Sol#7'];
+  if (!T_SHAPES[u.map]) u.map = 'Sol#7';
+  const sh = T_SHAPES[u.map];
+  const marks = sh.marks.map(m => ({ s:m.s, f:m.f, k:m.k || 's', l: u.fbm === 'notes' ? m.n : m.l, n:m.n }));
+  el.innerHTML = '<div class="chips t-mc"></div><div class="chips t-mm"></div>' + tFbHtml({ from:sh.from, to:sh.to, marks, leg: tLeg([['r','tônica'],['s','escala']].concat(u.map === 'Sol#7' ? [['n','Si#, obrigatório']] : [])) }) + '<p class="small">' + sh.txt + '</p>';
+  const mc = el.querySelector('.t-mc'), mm = el.querySelector('.t-mm');
+  order.forEach(c => mc.appendChild(chip(c, u.map === c, () => { u.map = c; tMapaBox(el); }, 'sm')));
+  [['deg','Graus'],['notes','Notas']].forEach(([k, t]) => mm.appendChild(chip(t, u.fbm === k, () => { u.fbm = k; tMapaBox(el); }, 'sm')));
+}
+
+/* Áudio na interface */
+let tPlayBtn = null;
+function tResetBtn(){ if (tPlayBtn){ tPlayBtn.setAttribute('aria-pressed', 'false'); tPlayBtn.textContent = 'Ouvir'; const cur = tPlayBtn.parentElement && tPlayBtn.parentElement.querySelector('.t-cur'); if (cur){ cur.textContent = ''; cur.hidden = true; } tPlayBtn = null; } const now = document.getElementById('t-now'); if (now) now.innerHTML = '&nbsp;'; }
+function tToggle(btn, id){
+  if (tPlayBtn === btn && TA.playing){ taStop(); return; }
+  const p = tPiece(id); if (!p) return;
+  taStop(); tResetBtn();
+  const now = document.getElementById('t-now');
+  const cur = btn.parentElement && btn.parentElement.querySelector('.t-cur');
+  if (p.count && now) now.innerHTML = 'Contagem: 1 2 3 4<small>' + escapeHtml(p.chords[0].name) + ' entra no próximo compasso</small>';
+  const pb = taPlay(p, { onChord: c => { if (now && c.info) now.innerHTML = escapeHtml(c.name) + '<small>' + escapeHtml(c.info) + '</small>'; if (cur && c.info && cur.closest('#t-session')){ cur.hidden = false; cur.textContent = c.name + ' · ' + c.info; } }, onEnd: tResetBtn });
+  if (pb){ tPlayBtn = btn; btn.setAttribute('aria-pressed', 'true'); btn.textContent = 'Parar'; }
+}
+function tExRow(ex){
+  const row = document.createElement('div'); row.className = 't-ex';
+  row.innerHTML = '<button class="btn t-play" type="button" aria-pressed="false">Ouvir</button><div><div class="st">' + ex.t + '</div><div class="meta">' + ex.d + '</div><div class="t-cur mono small" hidden></div></div>';
+  const b = row.querySelector('button'); b.addEventListener('click', () => tToggle(b, ex.p));
+  return row;
+}
+
+/* Perguntas */
+function tMake(gens, keys, last){
+  for (let k = 0; k < 8; k++){
+    const id = tPick(gens); const g = TG[id]; if (!g) continue;
+    let x = null; try { x = g.f({ keys }); } catch(e){ x = null; }
+    if (!x || !x.o || x.o.indexOf(x.a) < 0) continue;
+    if (last && x.q === last && k < 7) continue;
+    x.id = id; return x;
+  }
+  return null;
+}
+function tQuiz(host, cfg){
+  const st = { i:0, right:0, cur:null };
+  host.innerHTML = '<div class="row between"><span class="score"><span class="tq-n">0/' + cfg.n + '</span><span class="tq-r">acertos 0</span></span><button class="btn primary tq-b" type="button">Começar</button></div><p class="q tq-q" style="font-size:1.08rem">' + (cfg.intro || 'Toque em Começar.') + '</p><div class="opts tq-o"></div><div class="feedback tq-f" hidden></div>';
+  const qn = host.querySelector('.tq-n'), qr = host.querySelector('.tq-r'), qb = host.querySelector('.tq-b'), qq = host.querySelector('.tq-q'), qo = host.querySelector('.tq-o'), qf = host.querySelector('.tq-f');
+  const stat = tSS[cfg.role];
+  function show(){
+    const c = st.cur; qq.textContent = c.q;
+    qo.className = 'opts tq-o ' + (c.cls || (c.o.length === 2 ? 'two' : c.o.length === 3 ? 'three' : ''));
+    qo.innerHTML = '';
+    c.o.forEach(o => { const b = document.createElement('button'); b.type = 'button'; b.textContent = o; b.addEventListener('click', () => answer(o, b)); qo.appendChild(b); });
+    qf.hidden = true; qb.hidden = true; qn.textContent = st.i + '/' + cfg.n;
+  }
+  function answer(o, btn){
+    const c = st.cur; if (!c || c.done) return; c.done = true;
+    const ok = o === c.a; if (ok){ st.right++; stat.right++; } stat.asked++;
+    qo.querySelectorAll('button').forEach(b => { b.disabled = true; if (b.textContent === c.a) b.classList.add('right'); else if (b === btn) b.classList.add('wrong'); });
+    qf.hidden = false; qf.className = 'feedback tq-f ' + (ok ? 'ok' : 'bad'); qf.textContent = (ok ? 'Certo. ' : 'Resposta: ' + c.a + '. ') + c.ex;
+    qr.textContent = 'acertos ' + st.right; qb.hidden = false; qb.textContent = st.i >= cfg.n ? 'Ver resultado' : 'Próxima';
+    commit(d => { d.harm.log.push([Date.now(), c.id, ok ? 1 : 0]); });
+    tSummary();
+  }
+  function next(){
+    if (st.i >= cfg.n){
+      const r = st.right, n = cfg.n;
+      qq.textContent = 'Fim da rodada: ' + r + ' de ' + n + '. ' + (r >= n - 1 ? 'Firme.' : r >= Math.ceil(n * 0.6) ? 'Quase lá. Releia a explicação dos que errou.' : 'Releia a ideia e faça outra rodada.');
+      qo.innerHTML = ''; qf.hidden = true; qb.hidden = false; qb.textContent = 'Outra rodada'; st.i = 0; st.right = 0; st.cur = null; qr.textContent = 'acertos 0'; return;
+    }
+    st.cur = tMake(cfg.gens, cfg.keys, st.cur && st.cur.q); if (!st.cur) return; st.i++; show();
+  }
+  qb.addEventListener('click', next);
+}
+function tEar(host, types, n){
+  const st = { i:0, right:0, cur:null };
+  host.className = 'card flat';
+  host.innerHTML = '<div class="row between"><h3>Teste de ouvido</h3><span class="score"><span class="te-n">0/' + n + '</span><span class="te-r">acertos 0</span></span></div><p class="small muted te-q">Toque em Tocar, ouça e responda. Use fone se puder.</p><div class="row"><button class="btn primary te-p" type="button">Tocar</button><button class="btn te-a" type="button" hidden>Ouvir de novo</button></div><div class="opts two tx te-o"></div><div class="feedback te-f" hidden></div>';
+  const en = host.querySelector('.te-n'), er = host.querySelector('.te-r'), eq = host.querySelector('.te-q'), ep = host.querySelector('.te-p'), ea = host.querySelector('.te-a'), eo = host.querySelector('.te-o'), ef = host.querySelector('.te-f');
+  function play(){ if (st.cur){ taStop(); tResetBtn(); taPlay(st.cur.x.p, {}); } }
+  function ask(){
+    if (st.i >= n){ eq.textContent = 'Fim: ' + st.right + ' de ' + n + '. Toque em Tocar para outra rodada.'; st.i = 0; st.right = 0; st.cur = null; ep.textContent = 'Tocar'; ea.hidden = true; eo.innerHTML = ''; ef.hidden = true; er.textContent = 'acertos 0'; return; }
+    const ty = tPick(types); const E = T_EAR[ty]; const x = E.make();
+    st.cur = { ty, x, done:false }; st.i++; en.textContent = st.i + '/' + n;
+    eq.textContent = E.q; eo.innerHTML = ''; ef.hidden = true; ea.hidden = false; ep.textContent = 'Próxima'; ep.hidden = true;
+    E.o.forEach(o => { const b = document.createElement('button'); b.type = 'button'; b.textContent = o; b.addEventListener('click', () => answer(o, b)); eo.appendChild(b); });
+    play();
+  }
+  function answer(o, btn){
+    const c = st.cur; if (!c || c.done) return; c.done = true; const ok = o === c.x.a;
+    if (ok){ st.right++; tSS.ear.right++; } tSS.ear.asked++;
+    eo.querySelectorAll('button').forEach(b => { b.disabled = true; if (b.textContent === c.x.a) b.classList.add('right'); else if (b === btn) b.classList.add('wrong'); });
+    ef.hidden = false; ef.className = 'feedback te-f ' + (ok ? 'ok' : 'bad'); ef.textContent = (ok ? 'Certo. ' : 'Era ' + c.x.a + '. ') + c.x.ex;
+    er.textContent = 'acertos ' + st.right; ep.hidden = false; ep.textContent = st.i >= n ? 'Ver resultado' : 'Próxima';
+    commit(d => { d.harm.log.push([Date.now(), 'ouvido-' + c.ty, ok ? 1 : 0]); });
+    tSummary();
+  }
+  ep.addEventListener('click', ask); ea.addEventListener('click', play);
+}
+
+/* Sessão */
+function tCard(n, title, mins, build){
+  const card = document.createElement('div'); card.className = 'card';
+  card.innerHTML = '<div class="t-blk"><div class="num">' + n + '</div><div class="body"><div class="hd2"><h3>' + title + '</h3>' + (mins ? '<span class="pill">' + mins + '</span>' : '') + '</div><div class="t-in"></div></div></div>';
+  build(card.querySelector('.t-in'));
+  return card;
+}
+function tSummary(){
+  const el = document.getElementById('t-sum'); if (!el) return;
+  const a = tSS; const parts = [];
+  if (a.rev.asked) parts.push('revisão ' + a.rev.right + '/' + a.rev.asked);
+  if (a.drill.asked) parts.push('prática ' + a.drill.right + '/' + a.drill.asked);
+  if (a.ear.asked) parts.push('ouvido ' + a.ear.right + '/' + a.ear.asked);
+  el.textContent = 'Nesta sessão: ' + (parts.length ? parts.join(' · ') : 'nada respondido ainda') + ' · tempo ' + Math.round(tElapsed() / 60000) + ' min.';
+}
+function tRenderSession(n){
+  taStop(); tResetBtn();
+  tSS = { rev:{ right:0, asked:0 }, drill:{ right:0, asked:0 }, ear:{ right:0, asked:0 } };
+  const X = T_SESS[n - 1]; const host = document.getElementById('t-session'); host.innerHTML = '';
+  const head = document.createElement('div'); head.className = 'card';
+  head.innerHTML = '<span class="eyebrow">Sessão ' + n + ' de 7 · ' + tDateLabel(n) + '</span><h2>' + X.t + '</h2><p class="small muted">Na aula: ' + X.aula + '</p><div class="timer"><span class="t" id="t-timer-d">15:00</span><button class="btn primary" id="t-timer-s" type="button">Iniciar</button><button class="btn" id="t-timer-r" type="button">Zerar</button></div><p class="t-hint" id="t-timer-h"></p>';
+  host.appendChild(head);
+  head.querySelector('#t-timer-s').addEventListener('click', () => { if (tTimer().running) tStopTimer(); else tStartTimer(); });
+  head.querySelector('#t-timer-r').addEventListener('click', tResetTimer);
+  host.appendChild(tCard(1, X.revT || 'Revisão relâmpago', '2 min', el => tQuiz(el, { gens: X.rev, n:4, keys: X.revKeys || X.keys, role:'rev', intro: n === 1 ? 'Perguntas sobre o que vocês já viram em 27/10. Toque em Começar.' : 'Quatro perguntas das sessões anteriores. Toque em Começar.' })));
+  host.appendChild(tCard(2, 'A ideia', '4 min', el => { el.innerHTML = '<div class="t-ideia">' + X.ideia + '</div>'; tFill(el); }));
+  host.appendChild(tCard(3, 'Ouvir', '3 min', el => { const list = document.createElement('div'); list.className = 'col'; X.ouvir.forEach(ex => list.appendChild(tExRow(ex))); el.appendChild(list); if (X.ear.length){ const eq = document.createElement('div'); el.appendChild(eq); tEar(eq, X.ear, 5); } }));
+  host.appendChild(tCard(4, 'Praticar', '5 min', el => tQuiz(el, { gens: X.gens, n: X.n || 8, keys: X.keys, role:'drill' })));
+  host.appendChild(tCard(5, 'Fechar', '1 min', el => tFechar(el, n, X)));
+  host.appendChild(tCard(6, 'No baixo', 'opcional, fora dos 15 min', el => { el.innerHTML = '<p>' + X.baixo + '</p><p class="small muted">A base do Maca está no fim desta aba e na aba Bases.</p>'; }));
+  tRenderTimer();
+}
+function tFechar(el, n, X){
+  const rec = tRec(n) || {}; let rate = +rec.rate || 0;
+  el.innerHTML = '<p class="small" id="t-sum"></p>' + (X.mods ? '<div class="col t-mods" id="t-mods"></div>' : '') + '<p class="small muted">Como foi a sessão?</p><div class="rate" id="t-rate"></div><textarea id="t-note" placeholder="Dúvida para levar ao Maca (opcional)"></textarea><button class="btn primary block" id="t-reg" type="button">Registrar sessão</button><p class="small muted" id="t-regd"></p>';
+  const rb = el.querySelector('#t-rate'); const draw = () => renderRate(rb, rate, v => { rate = v; draw(); }); draw();
+  if (X.mods){ const box = el.querySelector('#t-mods'); const drawMods = () => { box.innerHTML = '<p class="small muted">Cada parte da semana, um toque:</p>'; T_MODS.forEach(m => { const row = document.createElement('div'); row.className = 'switch'; row.innerHTML = '<div class="small" style="min-width:150px">' + m.t + '</div><div class="rate"></div>'; const cur = (S.data.harm.mod[m.id] || {}).v || 0; renderRate(row.querySelector('.rate'), cur, v => { commit(d => { d.harm.mod[m.id] = { v, t: Date.now() }; }); drawMods(); }); box.appendChild(row); }); }; drawMods(); }
+  el.querySelector('#t-reg').addEventListener('click', () => {
+    if (!rate){ toast('Escolha como foi: Travei, Com esforço ou Fluente.'); return; }
+    const now = Date.now(), a = tSS; const right = a.rev.right + a.drill.right + a.ear.right, asked = a.rev.asked + a.drill.asked + a.ear.asked;
+    const minutes = Math.round(tElapsed() / 60000); const note = el.querySelector('#t-note').value.trim();
+    commit(d => { const prev = d.harm.s[String(n)] || {}; d.harm.s[String(n)] = { t: now, done: now, rate, right, asked, min: minutes, n: (+prev.n || 0) + 1 }; d.sessions.unshift({ ts: now, label: 'Teoria · sessão ' + n + ': ' + X.t, quizAsked: asked, quizRight: right, minutes, note }); });
+    el.querySelector('#t-note').value = ''; tResetTimer(); toast('Sessão ' + n + ' registrada.');
+    el.querySelector('#t-regd').textContent = 'Registrada às ' + hhmm(now) + '. ' + (n < 7 ? 'A próxima é a sessão ' + (n + 1) + ' (' + tDateLabel(n + 1) + ').' : 'Trilha completa. Bom trabalho para terça.');
+    renderAll();
+  });
+  if (rec.done) el.querySelector('#t-regd').textContent = 'Já registrada em ' + fmtDate(rec.done) + (rec.n > 1 ? ' (' + rec.n + ' vezes)' : '') + '. Pode refazer e registrar de novo.';
+  tSummary();
+}
+
+/* Cronômetro da sessão */
+function tTimer(){ return S.ui.tt || (S.ui.tt = { total:900, elapsedMs:0, running:false, startedAt:0 }); }
+function tElapsed(){ const t = tTimer(); return t.elapsedMs + (t.running ? Date.now() - t.startedAt : 0); }
+function tRenderTimer(){
+  const d = document.getElementById('t-timer-d'); if (!d) return;
+  const t = tTimer(); const left = Math.max(0, t.total - Math.floor(tElapsed() / 1000));
+  d.textContent = String(Math.floor(left / 60)).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0');
+  document.getElementById('t-timer-s').textContent = t.running ? 'Pausar' : 'Iniciar';
+  const m = tElapsed() / 60000; const h = document.getElementById('t-timer-h');
+  if (h) h.textContent = (t.running || m > 0) ? 'Agora: ' + (m < 2 ? '1. revisão' : m < 6 ? '2. a ideia' : m < 9 ? '3. ouvir' : m < 14 ? '4. praticar' : '5. fechar') + '.' : 'Revisão 2 · Ideia 4 · Ouvir 3 · Praticar 5 · Fechar 1 (minutos).';
+  if (t.running && left === 0){ tStopTimer(); beep(); toast('15 minutos. Feche a sessão.'); }
+}
+function tStartTimer(){ const t = tTimer(); if (t.running) return; t.running = true; t.startedAt = Date.now(); clearInterval(tTimerInt); tTimerInt = setInterval(tRenderTimer, 500); tRenderTimer(); }
+function tStopTimer(){ const t = tTimer(); if (!t.running) return; t.elapsedMs += Date.now() - t.startedAt; t.running = false; clearInterval(tTimerInt); tRenderTimer(); }
+function tResetTimer(){ tStopTimer(); tTimer().elapsedMs = 0; tRenderTimer(); }
+
+/* Bases da trilha */
+function tRenderLoops(){
+  const st = tLoopSet();
+  const lk = document.getElementById('t-lk'), lb = document.getElementById('t-lb'), ld = document.getElementById('t-ld'), ll = document.getElementById('t-ll');
+  if (!lk) return;
+  const restart = () => { if (TA.playing && tPlayBtn && tPlayBtn.dataset.loop){ const b = tPlayBtn, id = b.dataset.loop; taStop(); tToggle(b, id); } };
+  lk.innerHTML = ''; [['E','Mi'],['G','Sol']].forEach(([k, t]) => lk.appendChild(chip(t, st.key === k, () => { st.key = k; tRenderLoops(); restart(); }, 'sm')));
+  lb.innerHTML = ''; [70, 90, 119].forEach(b => lb.appendChild(chip(String(b), st.bpm === b, () => { st.bpm = b; tRenderLoops(); restart(); }, 'sm')));
+  ld.innerHTML = ''; [[true,'com'],[false,'sem']].forEach(([v, t]) => ld.appendChild(chip(t, st.drums === v, () => { st.drums = v; tRenderLoops(); restart(); }, 'sm')));
+  if (!tLoopsBound){
+    tLoopsBound = true; ll.innerHTML = '';
+    Object.keys(T_LOOPS).forEach(id => { const L = T_LOOPS[id]; const row = tExRow({ t: L.t, d: L.d, p: id }); row.querySelector('button').dataset.loop = id; ll.appendChild(row); });
+  }
+}
+function renderTeoria(){
+  const u = tUI(); if (!u.sess) u.sess = tNextSess();
+  const el = document.getElementById('t-days'); if (!el) return;
+  el.innerHTML = ''; const today = tToday();
+  for (let i = 1; i <= 7; i++){
+    const r = tRec(i); const b = document.createElement('button'); b.type = 'button';
+    b.className = 't-day' + (r && r.done ? ' s' + (r.rate || 2) : '') + (T_DATES[i - 1] === today ? ' today' : '');
+    b.setAttribute('aria-pressed', u.sess === i ? 'true' : 'false');
+    b.setAttribute('aria-label', 'Sessão ' + i + ', ' + tDateLabel(i) + (r && r.done ? ', registrada' : ''));
+    b.innerHTML = '<span class="w">' + T_WD[i - 1] + '</span><span class="n">' + i + '</span><span class="d">' + T_DATES[i - 1].slice(8) + '/11</span>';
+    b.addEventListener('click', () => { u.sess = i; renderTeoria(); const s = document.getElementById('t-session'); if (s && s.scrollIntoView) s.scrollIntoView({ behavior:'smooth', block:'start' }); });
+    el.appendChild(b);
+  }
+  const nx = tNextSess(); const all = [1,2,3,4,5,6,7].every(i => (tRec(i) || {}).done); const ti = T_DATES.indexOf(today);
+  let s = all ? 'Trilha completa. Até a aula, use a sessão 7 e as bases para revisar.' : 'Próxima: sessão ' + nx + ' (' + tDateLabel(nx) + ').';
+  if (!all && ti >= 0 && ti + 1 > nx) s += ' O plano de hoje era a ' + (ti + 1) + '; se precisar, faça duas no mesmo dia, na ordem.';
+  document.getElementById('t-next').textContent = s + ' Aula com o Maca: terça 10/11.';
+  if (tRendered !== u.sess){ tRendered = u.sess; tRenderSession(u.sess); }
+  tRenderLoops(); tRenderTimer(); tSummary();
+}
+
 /* ===================== Abas, erros, início ===================== */
-function showTab(id){ S.ui.tab = id; document.querySelectorAll('nav.tabs [role="tab"]').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === id ? 'true' : 'false')); ['hoje','mapa','teste','bases','regras'].forEach(t => { document.getElementById('tab-' + t).hidden = t !== id; }); }
-function renderAll(){ renderHoje(); renderMapa(); renderQuizStatic(); renderQuestion(); renderBases(); renderTimer(); }
+const TAB_IDS = ['hoje','teoria','mapa','teste','bases','regras'];
+function showTab(id){ if (TAB_IDS.indexOf(id) < 0) id = 'hoje'; if (S.ui.tab === 'teoria' && id !== 'teoria'){ taStop(); } S.ui.tab = id; lsSet(LS_TAB, id); document.querySelectorAll('nav.tabs [role="tab"]').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === id ? 'true' : 'false')); TAB_IDS.forEach(t => { document.getElementById('tab-' + t).hidden = t !== id; }); }
+function renderAll(){ renderHoje(); renderMapa(); renderQuizStatic(); renderQuestion(); renderBases(); renderTimer(); renderTeoria(); }
 function reportError(msg){
   const line = document.getElementById('status-line'); if (!line) return;
   line.classList.add('err'); document.getElementById('status').textContent = 'Erro na página: ' + msg + '. Recarregue; se repetir, anote esta mensagem.';
@@ -1195,15 +1966,18 @@ function bind(){
 }
 function start(hot){
   S.data = loadLocal();
+  if (!(hot && isObj(hot.ui))){ const lt = lsGet(LS_TAB); if (lt && TAB_IDS.indexOf(lt) >= 0) S.ui.tab = lt; }
   if (hot && isObj(hot.ui)){
     Object.assign(S.ui, clone(hot.ui));
     if (S.ui.timer && S.ui.timer.running){ S.ui.timer.elapsedMs += Date.now() - (S.ui.timer.startedAt || Date.now()); S.ui.timer.running = false; }
     if (S.ui.quiz && S.ui.quiz.answered == null) S.ui.quiz = null;
+    if (S.ui.tt && S.ui.tt.running){ S.ui.tt.elapsedMs += Date.now() - (S.ui.tt.startedAt || Date.now()); S.ui.tt.running = false; }
   }
   bind(); renderPresets(); showTab(S.ui.tab || 'hoje'); renderAll(); renderSync();
   if (window.claude && window.claude.hot && window.claude.hot.snapshot) window.claude.hot.snapshot(() => ({ ui: clone(S.ui) }));
   initSync();
 }
+if (/[?&]teste=1/.test(location.search)) window.__teoria = { TG, T_EAR, T_SESS, tPiece, taSchedule, TA, tMake, normalize, mergeData, S };
 if (window.claude && window.claude.hot && window.claude.hot.ready) window.claude.hot.ready(start); else start((window.claude && window.claude.hot && window.claude.hot.data) || {});
 })();
 </script>
